@@ -1,0 +1,42 @@
+<app-menu></app-menu>
+<div class="container bg-dark">
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">player</th>
+            <th scope="col">hero</th>
+            <th scope="col">place</th>
+            <th scope="col">mmr</th>
+            <th scope="col">timestamp</th>
+            <th scope="col">timestamp onw</th>      
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let game of games">
+            <td>{{game.id}}</td>
+            <td>{{game.player}}</td>
+            <td>{{game.hero}}</td>
+            <td>{{game.place}}</td>
+            <td>{{game.mmr}}</td>
+            <td>{{game.timestamp}}</td>
+            <td>{{currentTimeInSeconds}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <form [formGroup]="gameForm">
+        Hero <input [class.is-invalid]="gameForm.get('hero')?.touched && gameForm.get('hero')?.invalid" 
+          type="text" class="form-control" formControlName="hero" >
+        Place <input [class.is-invalid]="gameForm.get('place')?.touched && gameForm.get('place')?.invalid" 
+        type="number" class="form-control" formControlName="place">
+        MMR <input [class.is-invalid]="gameForm.get('mmr')?.touched && gameForm.get('mmr')?.invalid" 
+        type="number" class="form-control" formControlName="mmr">
+        Timestamp<input [class.is-invalid]="gameForm.get('timestamp')?.touched && gameForm.get('timestamp')?.invalid" 
+        type="number" class="form-control" formControlName="timestamp">
+        <input
+        type="datetime-local" id="timestamp" name="timestamp"
+        value="2021-01-01T00:00">
+
+        <button class="btn btn-primary" type="submit">enviar</button>
+      </form>
+</div>
