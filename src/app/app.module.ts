@@ -9,6 +9,19 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { ProductosComponent } from './productos/productos.component';
 import { GamesComponent } from './games/games.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { HeroComponent } from './hero/hero.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatTableModule} from "@angular/material/table";
+import {MatCardModule} from "@angular/material/card";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatSelectModule} from "@angular/material/select";
+
 
 import { HttpClientModule } from '@angular/common/http';
 import { productoInterceptor } from './interceptors/producto.interceptor';
@@ -22,11 +35,10 @@ import {
   FacebookLoginProvider,
   AmazonLoginProvider,
 } from 'angularx-social-login';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
-import { MatSliderModule } from '@angular/material/slider';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { HeroComponent } from './hero/hero.component';
+
 
 
 @NgModule({
@@ -47,6 +59,18 @@ import { HeroComponent } from './hero/hero.component';
     ReactiveFormsModule,
     MatSliderModule,
     MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatIconModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {
