@@ -37,6 +37,8 @@ import {
 } from 'angularx-social-login';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HeroesComponent} from "./heroes/heroes.component";
+import {GameEntryComponent} from "./gameEntry/gameEntry.component";
 
 
 
@@ -50,6 +52,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ProductosComponent,
     GamesComponent,
     HeroComponent,
+    HeroesComponent,
+    GameEntryComponent,
   ],
   imports: [
     BrowserModule,

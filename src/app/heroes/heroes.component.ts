@@ -1,22 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
-import { Game } from '../models/game';
-import { GameService } from '../services/game.service';
 import { TokenService } from '../services/token.service';
-import {Router} from "@angular/router";
+import { HeroService } from '../services/hero.service';
+import { Hero } from '../models/hero';
+import { ActivatedRoute } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
+import {Game} from "../models/game";
+
 
 @Component({
-  selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css']
+  selector: 'app-hero',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
 })
-export class GamesComponent implements OnInit {
-
-  games: Game[] = [];
-
-  currentTimeInSeconds=Math.floor(Date.now()/1000);
+export class HeroesComponent implements OnInit {
 
   userLogged: SocialUser = new SocialUser;
   isLogged: boolean = false;
@@ -25,16 +22,17 @@ export class GamesComponent implements OnInit {
   constructor(
     private authService: SocialAuthService,
     private tokenService: TokenService,
-    private gameService: GameService,
-    private httpClient: HttpClient
+    private heroService: HeroService,
+    private route: ActivatedRoute,
+  private httpClient: HttpClient
+  ) { }
 
+  heroes: Hero[] = [];
+  from!:string;
+  to!:string;
+  private sub: any;
 
-  ) {
-  }
-
-
-
-  ngOnInit():  void {
+  ngOnInit(): void {
     this.httpClient.get(this.oauthURL + 'check').subscribe(
       data => {
         if(Object.values(data)[0] == true){
@@ -59,10 +57,21 @@ export class GamesComponent implements OnInit {
           );
         }
       }
-    )
-    this.gameService.gameList().subscribe(
+    );
+    this.sub = this.route.params.subscribe(params => {
+      this.from = params['from'];
+      console.log(this.from);
+      this.to = params['to'];
+      console.log(this.to);
+      this.getAllHeroes();
+    });
+  }
+
+  getAllHeroes():void{
+
+    this.heroService.getAllHeroes(this.from,this.to).subscribe(
       data => {
-        this.games = data;
+        this.heroes = data;
       },
       err => {
         console.log(err);
@@ -70,6 +79,5 @@ export class GamesComponent implements OnInit {
     );
   }
 
+
 }
-
-

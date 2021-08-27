@@ -3,23 +3,19 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" routerLink="/">
-                <i class="fas fa-home"></i> Inicio</a>
-            </li>
-            <li class="nav-item active" *ngIf="isLogged">
-              <a class="nav-link" routerLink="/lista">
-                <i class="fas fa-list"></i> Lista</a>
+                <i class="fas fa-home"></i> Home</a>
             </li>
             <li class="nav-item active" *ngIf="isLogged">
               <a class="nav-link" routerLink="/game">
                 <i class="fas fa-list"></i> Games</a>
             </li>
             <li class="nav-item active" *ngIf="isLogged">
-              <a class="nav-link" routerLink="/hero">
+              <a class="nav-link" routerLink="/heroes">
                 <i class="fas fa-list"></i> Heroes</a>
             </li>
           </ul>
@@ -35,15 +31,15 @@
           <img *ngIf="isLogged" src="{{userLogged.photoUrl}}" class="rounded-circle mr-3" style="width: 50px">
 
           <button *ngIf="!isLogged" class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login">
-            <i class="fas fa-sign-in-alt fa-lg"></i> Iniciar Sesión</button>
+            <i class="fas fa-sign-in-alt fa-lg"></i> Log in</button>
             <button *ngIf="isLogged" class="btn btn-outline-danger my-2 my-sm-0" type="submit" (click)="logOut()">
-              <i class="fas fa-sign-out-alt fa-lg"></i> Cerrar Sesión</button>
+              <i class="fas fa-sign-out-alt fa-lg"></i> Log out</button>
 
         </div>
-        
+
       </nav>
       <div class="jumbotron m-0 mb-3 p-1 jumbotron-fluid">
         <div class="container ml-0">
-          <h1 class="ml-0 text-danger">Reevaluate this</h1>  
+          <h1 class="ml-0 text-danger">Reevaluate this</h1>
         </div>
       </div>

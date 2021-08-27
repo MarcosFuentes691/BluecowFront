@@ -5,6 +5,7 @@ import { HeroService } from '../services/hero.service';
 import { Hero } from '../models/hero';
 import { ActivatedRoute } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
+import {Game} from "../models/game";
 
 
 @Component({
@@ -27,9 +28,9 @@ export class HeroComponent implements OnInit {
   ) { }
 
   hero!: Hero;
-  hero2!: Hero;
   heroString!: string;
-  hola!: string;
+  from!:string;
+  to!:string;
   private sub: any;
 
   ngOnInit(): void {
@@ -59,10 +60,12 @@ export class HeroComponent implements OnInit {
       }
     )
     this.sub = this.route.params.subscribe(params => {
+      this.from = params['from'];
+      console.log(this.from);
+      this.to = params['to'];
+      console.log(this.to);
       this.heroString = params['hero'];
-      this.hola=params['hola'];
       console.log(this.heroString);
-      console.log(this.hola);
     });
     if (this.heroString != null) {
       this.getHero();
@@ -70,7 +73,7 @@ export class HeroComponent implements OnInit {
   }
 
   getHero(): void{
-    this.heroService.getHero(this.heroString).subscribe(
+    this.heroService.getHero(this.heroString,this.from,this.to).subscribe(
       data => {
         this.hero = data;
       },
