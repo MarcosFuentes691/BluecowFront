@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import { ProductosComponent } from './productos/productos.component';
 import { GamesComponent } from './games/games.component';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -39,6 +38,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HeroesComponent} from "./heroes/heroes.component";
 import {GameEntryComponent} from "./gameEntry/gameEntry.component";
+import { GameTableComponent } from './game-table/game-table.component';
 
 
 
@@ -49,11 +49,11 @@ import {GameEntryComponent} from "./gameEntry/gameEntry.component";
     LoginComponent,
     MenuComponent,
     HomeComponent,
-    ProductosComponent,
     GamesComponent,
     HeroComponent,
     HeroesComponent,
     GameEntryComponent,
+    GameTableComponent,
   ],
   imports: [
     BrowserModule,

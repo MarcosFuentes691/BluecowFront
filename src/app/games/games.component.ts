@@ -6,6 +6,7 @@ import { GameService } from '../services/game.service';
 import { TokenService } from '../services/token.service';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-games',
@@ -26,7 +27,8 @@ export class GamesComponent implements OnInit {
     private authService: SocialAuthService,
     private tokenService: TokenService,
     private gameService: GameService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private userService: UserService,
 
 
   ) {
@@ -38,16 +40,7 @@ export class GamesComponent implements OnInit {
     this.httpClient.get(this.oauthURL + 'check').subscribe(
       data => {
         if(Object.values(data)[0] == true){
-          this.userLogged.name = Object.values(data)[1];
-          this.userLogged.authToken="token";
-          this.userLogged.id="id";
-          this.userLogged.email=Object.values(data)[1];
-          this.userLogged.provider="provides";
-          this.userLogged.authorizationCode="code";
-          this.userLogged.firstName=Object.values(data)[1];
-          this.userLogged.idToken="token";
-          this.userLogged.lastName=Object.values(data)[1];
-          this.userLogged.photoUrl="https://www.pngfind.com/pngs/m/123-1234419_free-png-download-cute-cat-png-images-background.png";
+          this.userLogged=this.userService.initUserLogged(data);
           this.isLogged = true;
         }
         else{

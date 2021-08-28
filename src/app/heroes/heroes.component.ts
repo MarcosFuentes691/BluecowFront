@@ -6,6 +6,7 @@ import { Hero } from '../models/hero';
 import { ActivatedRoute } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 import {Game} from "../models/game";
+import {UserService} from "../services/user.service";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class HeroesComponent implements OnInit {
     private tokenService: TokenService,
     private heroService: HeroService,
     private route: ActivatedRoute,
+    private userService: UserService,
   private httpClient: HttpClient
   ) { }
 
@@ -36,16 +38,7 @@ export class HeroesComponent implements OnInit {
     this.httpClient.get(this.oauthURL + 'check').subscribe(
       data => {
         if(Object.values(data)[0] == true){
-          this.userLogged.name = Object.values(data)[1];
-          this.userLogged.authToken="token";
-          this.userLogged.id="id";
-          this.userLogged.email=Object.values(data)[1];
-          this.userLogged.provider="provides";
-          this.userLogged.authorizationCode="code";
-          this.userLogged.firstName=Object.values(data)[1];
-          this.userLogged.idToken="token";
-          this.userLogged.lastName=Object.values(data)[1];
-          this.userLogged.photoUrl="https://www.pngfind.com/pngs/m/123-1234419_free-png-download-cute-cat-png-images-background.png";
+          this.userLogged=this.userService.initUserLogged(data);
           this.isLogged = true;
         }
         else{
@@ -57,7 +50,7 @@ export class HeroesComponent implements OnInit {
           );
         }
       }
-    );
+    )
     this.sub = this.route.params.subscribe(params => {
       this.from = params['from'];
       console.log(this.from);
