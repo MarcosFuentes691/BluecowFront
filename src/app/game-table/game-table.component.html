@@ -1,0 +1,24 @@
+<div class="container bg-dark p-0">
+  <table class="table table-bordered table-dark align-middle" id="bootstrap-overrides" matSort (matSortChange)="sortData($event)">
+    <thead>
+    <tr>
+      <th mat-sort-header="id" scope="col">id</th>
+      <th mat-sort-header="hero" scope="col">Hero</th>
+      <th mat-sort-header="place" scope="col">Place</th>
+      <th mat-sort-header="mmr" scope="col">Mmr</th>
+      <th scope="col">Difference</th>
+      <th mat-sort-header="timestamp" scope="col">Timestamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let game of games" class="pos{{game.place}}">
+      <td>{{game.id}}</td>
+      <td><img src="/assets/images/{{game.hero}}.png" alt="image" style="width: 70px; height: 70px;"><br>{{game.hero}} </td>
+      <td>{{game.place}}</td>
+      <td>{{game.mmr}}</td>
+      <td>Calculate</td>
+      <td>{{game.timestamp}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

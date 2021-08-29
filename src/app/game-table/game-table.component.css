@@ -1,0 +1,82 @@
+.noposi{
+  color:white;
+}
+
+.cursor:hover{
+  cursor: pointer;
+}
+
+#bootstrap-overrides{ /* 100+1=101 priority score, yay! */
+  text-align: center;
+  vertical-align: middle;
+  font-size: large;
+}
+
+#bootstrap-overrides td{ /* 100+1=101 priority score, yay! */
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.pos1,.pos2{
+  color:#7CB342;
+  text-align: center;
+  vertical-align: center;
+}
+
+.pos3,.pos4{
+  text-align: center;
+  vertical-align: center;
+  color:#AED581;
+}
+
+.pos5,.pos6{
+  color:#FFD54F;
+  text-align: center;
+  vertical-align: center;
+}
+
+.pos7,.pos8{
+  color:#D84315;
+
+}
+
+.pos1:hover{
+  background-color: #1B5E20;
+  color:white;
+}
+
+.pos2:hover{
+  background-color: #388E3C;
+  color:white;
+}
+
+.pos3:hover{
+  background-color: #7CB342;
+  color:white;
+}
+
+.pos4:hover{
+  background-color: #CDDC39;
+  color:white;
+}
+
+.pos5:hover{
+  background-color: #FFEB3B;
+  color:grey;
+}
+
+.pos6:hover{
+  background-color: #FFB300;
+  color:grey;
+}
+
+.pos7:hover{
+  background-color: #E65100;
+  color:white;
+}
+
+.pos8:hover{
+  background-color: #BF360C;
+  color:white;
+}
