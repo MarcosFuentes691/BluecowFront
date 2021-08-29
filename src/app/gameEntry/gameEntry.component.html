@@ -1,14 +1,26 @@
-<div class="container">
+<div class="container-fluid row d-flex justify-content-center align-self-center m-3">
+
 <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+  <div class="row d-flex justify-content-center align-self-center">
+    <div class="col-3">
   Hero <input [class.is-invalid]="gameForm.get('hero')?.touched && gameForm.get('hero')?.invalid"
               type="text" class="form-control" formControlName="hero" placeholder="Omu">
+    </div>
+    <div class="col-2">
   Place <input [class.is-invalid]="gameForm.get('place')?.touched && gameForm.get('place')?.invalid"
                type="number" class="form-control" formControlName="place" placeholder="1">
+    </div>
+    <div class="col-2">
   MMR <input [class.is-invalid]="gameForm.get('mmr')?.touched && gameForm.get('mmr')?.invalid"
              type="number" class="form-control" formControlName="mmr" placeholder="6969">
+    </div>
+    <div class="col-3">
   Timestamp<input [class.is-invalid]="gameForm.get('timestamp')?.touched && gameForm.get('timestamp')?.invalid"
                   type="text" class="form-control" formControlName="timestamp" placeholder="2021-08-27T11:11:11.111" >
-
+    </div>
+    <div class="col-2">
   <button class="btn btn-primary" type="submit" >Send</button>
+  </div>
+  </div>
 </form>
 </div>
