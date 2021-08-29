@@ -20,6 +20,7 @@ export class GamesComponent implements OnInit {
 
   userLogged: SocialUser = new SocialUser;
   isLogged: boolean = false;
+  isCustom: boolean = false;
   oauthURL = 'http://localhost:8080/oauth/';
   searchForm!:FormGroup;
   range!:FormGroup;
@@ -63,7 +64,8 @@ export class GamesComponent implements OnInit {
     this.searchForm = new FormGroup({
       hero: new FormControl('',Validators.required),
       page: new FormControl('',Validators.required),
-      amount: new FormControl('',Validators.required)
+      amount: new FormControl('',Validators.required),
+      time: new FormControl('',Validators.required),
     });
     this.gameService.gameList().subscribe(
       data => {
@@ -76,26 +78,35 @@ export class GamesComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.searchForm.value.time);
+    let time: string = this.searchForm.value.time;
     let startMoment : string = moment("2000-01-01").format("YYYY-MM-DD HH:mm:ss.SSS");
     let endMoment : string = moment("2050-01-01").format("YYYY-MM-DD HH:mm:ss.SSS");
-    let zz : string = "0000a";
-    if(this.range.value.start!=undefined) {
-      startMoment = moment(this.range.value.start["_d"]).format("YYYY-MM-DD HH:mm:ss.SSS");
-      zz = moment(this.range.value.start["_d"]).format("ZZ");
+    let timeZone : string = "0000a";
+    if(time=='Today' || time=='Last week' || time=='Last month' || time=='Always'){
+      endMoment="now";
+      startMoment=time;
+      timeZone=new Date().getTimezoneOffset().toString();
     }
-    if(this.range.value.end!=undefined){
-      endMoment = moment(this.range.value.end["_d"]).format("YYYY-MM-DD HH:mm:ss.SSS");
-      zz = moment(this.range.value.end["_d"]).format("ZZ");
+    else {
+      if (this.range.value.start != undefined) {
+        startMoment = moment(this.range.value.start["_d"]).format("YYYY-MM-DD HH:mm:ss.SSS");
+        timeZone = moment(this.range.value.start["_d"]).format("ZZ");
+      }
+      if (this.range.value.end != undefined) {
+        endMoment = moment(this.range.value.end["_d"]).format("YYYY-MM-DD HH:mm:ss.SSS");
+        timeZone = moment(this.range.value.end["_d"]).format("ZZ");
+      }
     }
     console.log(startMoment);
     console.log(endMoment);
-    console.log(zz);
+    console.log(timeZone);
     this.gameService.searchGameList(this.searchForm.value.hero,
                                     this.searchForm.value.page,
                                     this.searchForm.value.amount,
                                     startMoment,
                                     endMoment,
-                                    zz).subscribe(
+                                    timeZone).subscribe(
 
       data => {
         this.games = data;
@@ -104,6 +115,10 @@ export class GamesComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  isCustomF(){
+    return this.searchForm.value.time == 'Custom';
   }
 
 }

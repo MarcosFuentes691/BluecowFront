@@ -77,8 +77,8 @@
                               class="form-control" formControlName="page" >
     </div>
 
-      <div class="col-2">
-      Filter Amount
+      <div class="col-1">
+        Amount
       <select [class.is-invalid]="searchForm.get('amount')?.touched && searchForm.get('amount')?.invalid"
               formControlName="amount" name="amount" id="amount" class="form-control">
         <option selected>25</option>
@@ -87,7 +87,18 @@
         <option>500</option>
       </select>
       </div>
-      <div class="col-2">
+      <div class="col-1">
+        Time
+      <select [class.is-invalid]="searchForm.get('time')?.touched && searchForm.get('time')?.invalid"
+              formControlName="time" name="time" id="time" class="form-control">
+        <option selected>Always</option>
+        <option>Today</option>
+        <option>Last week</option>
+        <option>Last month</option>
+        <option value="Custom">Custom</option>
+      </select>
+      </div>
+      <div class="col-2"  *ngIf="searchForm.value.time == 'Custom'" >
       <mat-form-field appearance="fill">
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
