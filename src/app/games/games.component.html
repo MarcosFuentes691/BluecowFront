@@ -1,31 +1,116 @@
 <app-menu></app-menu>
-<div>
-  <app-gameEntry></app-gameEntry>
-</div>
-<div class="container bg-dark">
-    <table class="table table-dark">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">player</th>
-            <th scope="col">hero</th>
-            <th scope="col">place</th>
-            <th scope="col">mmr</th>
-            <th scope="col">timestamp</th>
-            <th scope="col">timestamp onw</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let game of games">
-            <td>{{game.id}}</td>
-            <td>{{game.player}}</td>
-            <td>{{game.hero}}</td>
-            <td>{{game.place}}</td>
-            <td>{{game.mmr}}</td>
-            <td>{{game.timestamp}}</td>
-            <td>{{currentTimeInSeconds}}</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="container-fluid mb-4">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="row d-flex justify-content-center align-self-center">
+    <div class="col-2">
+    Filter Hero <select [class.is-invalid]="searchForm.get('hero')?.touched && searchForm.get('hero')?.invalid"
+                        class="form-control" formControlName="hero">
+        <option selected>All</option>
+        <option>Akazamzarak</option>
+        <option>Al'akir</option>
+        <option>Alexstrasza</option>
+        <option>Aranna</option>
+        <option>Bigglesworth</option>
+        <option>Blackthorn</option>
+        <option>Brann</option>
+        <option>C'thun</option>
+        <option>Chenvaala</option>
+        <option>Curator</option>
+        <option>Deathwing</option>
+        <option>Deryl</option>
+        <option>Edwin</option>
+        <option>Elise</option>
+        <option>Eudora</option>
+        <option>Flurgl</option>
+        <option>Galakrond</option>
+        <option>Galewing</option>
+        <option>Gallywix</option>
+        <option>George</option>
+        <option>Greybough</option>
+        <option>Guff</option>
+        <option>Hooktusk</option>
+        <option>Illidan</option>
+        <option>Jandice</option>
+        <option>Jaraxxus</option>
+        <option>Kaelthas</option>
+        <option>Kragg</option>
+        <option>Kurtrus</option>
+        <option>Lich Baz'hial</option>
+        <option>Lich King</option>
+        <option>Lord Barov</option>
+        <option>Maiev</option>
+        <option>Malygos</option>
+        <option>Millhouse</option>
+        <option>Millificent</option>
+        <option>Mukla</option>
+        <option>Mutanus</option>
+        <option>Nozdormu</option>
+        <option>N'Zoth</option>
+        <option>Omu</option>
+        <option>Patches</option>
+        <option>Patchwerk</option>
+        <option>Pyramad</option>
+        <option>Rafaam</option>
+        <option>Ragnaros</option>
+        <option>Rakanishu</option>
+        <option>Rat King</option>
+        <option>Reno</option>
+        <option>Saurfang</option>
+        <option>Silas</option>
+        <option>Sindragosa</option>
+        <option>Tess</option>
+        <option>Tickatus</option>
+        <option>Toki</option>
+        <option>Voljin</option>
+        <option>Wagtoggle</option>
+        <option>Xyrella</option>
+        <option>Y'Shaarj</option>
+        <option>Yogg</option>
+        <option>Ysera</option>
+        <option>Zephrys</option>
 
+    </select>
+    </div>
+    <div class="col-2">
+
+      Filter Page<input [class.is-invalid]="searchForm.get('page')?.touched && searchForm.get('page')?.invalid"
+                              class="form-control" formControlName="page" >
+    </div>
+
+      <div class="col-2">
+      Filter Amount
+      <select [class.is-invalid]="searchForm.get('amount')?.touched && searchForm.get('amount')?.invalid"
+              formControlName="amount" name="amount" id="amount" class="form-control">
+        <option selected>25</option>
+        <option>50</option>
+        <option>100</option>
+        <option>500</option>
+      </select>
+      </div>
+      <div class="col-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Start date">
+          <input matEndDate formControlName="end" placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+      </mat-form-field>
+
+      </div>
+
+    </div>
+    <button class="btn btn-primary ml-5" type="submit" >Send filter</button>
+
+
+  </form>
 </div>
+
+<app-game-table [games]=games></app-game-table>
+
+
+
+

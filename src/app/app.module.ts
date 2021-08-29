@@ -21,7 +21,6 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSelectModule} from "@angular/material/select";
 
-
 import { HttpClientModule } from '@angular/common/http';
 import { productoInterceptor } from './interceptors/producto.interceptor';
 import { gameInterceptor } from './interceptors/game.interceptor';
@@ -31,16 +30,15 @@ import { gameInterceptor } from './interceptors/game.interceptor';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {
   GoogleLoginProvider,
-  FacebookLoginProvider,
-  AmazonLoginProvider,
 } from 'angularx-social-login';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HeroesComponent} from "./heroes/heroes.component";
 import {GameEntryComponent} from "./gameEntry/gameEntry.component";
 import { GameTableComponent } from './game-table/game-table.component';
-
-
+import {MatSortModule} from "@angular/material/sort";
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule, MomentDateModule} from "@angular/material-moment-adapter";
+import {MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
 
 
 @NgModule({
@@ -55,27 +53,30 @@ import { GameTableComponent } from './game-table/game-table.component';
     GameEntryComponent,
     GameTableComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SocialLoginModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatSliderModule,
-    MatDatepickerModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatCardModule,
-    MatProgressBarModule,
-    MatIconModule,
-    BrowserAnimationsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        SocialLoginModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatSliderModule,
+        MatDatepickerModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatSelectModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatCardModule,
+        MatProgressBarModule,
+        MatIconModule,
+        BrowserAnimationsModule,
+        MatSortModule,
+        MatMomentDateModule,
+        MomentDateModule,
+    ],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
@@ -93,6 +94,20 @@ import { GameTableComponent } from './game-table/game-table.component';
     },
     productoInterceptor,
     gameInterceptor,
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: {
+        parse: {
+          dateInput: ['l', 'LL'],
+        },
+        display: {
+          dateInput: 'L',
+          monthYearLabel: 'MMM YYYY',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM YYYY',
+        },
+      },
+    },
   ],
   bootstrap: [AppComponent]
 })
