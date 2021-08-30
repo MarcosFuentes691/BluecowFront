@@ -22,6 +22,7 @@ export class GameTableComponent implements OnInit {
     const data = this.games;
     if (!sort.active || sort.direction === '') {
       this.games = data;
+
       return;
     }
     this.games = data.sort((a, b) => {
@@ -33,6 +34,8 @@ export class GameTableComponent implements OnInit {
           return compare(a.hero, b.hero, isAsc);
         case 'mmr':
           return compare(a.mmr, b.mmr, isAsc);
+        case 'difference':
+          return compare(a.difference, b.difference, isAsc);
         case 'place':
           return compare(a.place, b.place, isAsc);
         case 'timestamp':

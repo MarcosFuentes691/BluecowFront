@@ -17,6 +17,10 @@
   vertical-align: middle;
 }
 
+::ng-deep .mat-sort-header-container {
+  display:flex;
+  justify-content:center;
+}
 
 .pos1,.pos2{
   color:#7CB342;

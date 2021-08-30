@@ -6,6 +6,6 @@ export class Game {
     hero!:string;
     mmr!:number;
     timestamp:any;
- 
+    difference!:number;
 }
-  
+
