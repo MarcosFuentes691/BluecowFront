@@ -1,9 +1,19 @@
 <app-menu></app-menu>
 <div class="container-fluid mb-4">
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-    <div class="row d-flex justify-content-center align-self-center">
+      <div class="row mt-3 rowStyle">
+        <div class="col-1">
+          Page {{+(searchForm.value.page)+1}}<br>
+        <button mat-icon-button color="dark-grey"  (click)="prevPage()">
+          <mat-icon><i class="fas fa-arrow-alt-circle-left"></i></mat-icon>
+        </button>
+          <button mat-icon-button color="dark-grey"  (click)="nextPage()">
+            <mat-icon><i class="fas fa-arrow-alt-circle-right"></i></mat-icon>
+          </button>
+          <br>
+        </div>
     <div class="col-2">
-    Filter Hero <select [class.is-invalid]="searchForm.get('hero')?.touched && searchForm.get('hero')?.invalid"
+    Hero <select [class.is-invalid]="searchForm.get('hero')?.touched && searchForm.get('hero')?.invalid"
                         class="form-control" formControlName="hero">
         <option selected>All</option>
         <option>Akazamzarak</option>
@@ -73,7 +83,7 @@
     </div>
 
       <div class="col-1">
-        Amount
+        Show
       <select [class.is-invalid]="searchForm.get('amount')?.touched && searchForm.get('amount')?.invalid"
               formControlName="amount" name="amount" id="amount" class="form-control">
         <option>3</option>
@@ -83,7 +93,7 @@
         <option>500</option>
       </select>
       </div>
-      <div class="col-1">
+      <div class="col-2">
         Time
       <select [class.is-invalid]="searchForm.get('time')?.touched && searchForm.get('time')?.invalid"
               formControlName="time" name="time" id="time" class="form-control">
@@ -109,17 +119,10 @@
 
       </div>
 
+        <div class="col-1 d-flex align-items-center">
+          <button class="btn btn-primary ml-5 mr-5" type="submit" >Search</button>
+        </div>
     </div>
-    <div class="row d-flex justify-content-center align-self-center mt-3">
-        <button mat-icon-button color="dark-grey"  (click)="prevPage()">
-          <mat-icon><i class="fas fa-arrow-alt-circle-left"></i></mat-icon>
-        </button>
-    <button class="btn btn-primary ml-5 mr-5" type="submit" >Search</button>
-      <button mat-icon-button color="dark-grey" (click)="nextPage()">
-        <mat-icon><i class="fas fa-arrow-alt-circle-right"></i></mat-icon>
-      </button>
-    </div>
-    <p>{{searchForm.value.page}}</p>
   </form>
 </div>
 
