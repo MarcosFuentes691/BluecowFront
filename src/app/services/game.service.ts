@@ -14,7 +14,7 @@ export class GameService {
   constructor(private httpClient: HttpClient) { }
 
   public gameList(): Observable<Game[]> {
-    let params = new HttpParams().set('page', 0).set('amount',50000);
+    let params = new HttpParams().set('page', 0).set('amount',25);
     return this.httpClient.get<Game[]>(this.gameURL + 'view', { headers: new HttpHeaders({'Content-Type' : 'application/json'}),params});
   }
 
