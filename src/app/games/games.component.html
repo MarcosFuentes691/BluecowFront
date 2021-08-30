@@ -71,16 +71,12 @@
 
     </select>
     </div>
-    <div class="col-2">
-
-      Filter Page<input [class.is-invalid]="searchForm.get('page')?.touched && searchForm.get('page')?.invalid"
-                              class="form-control" formControlName="page" >
-    </div>
 
       <div class="col-1">
         Amount
       <select [class.is-invalid]="searchForm.get('amount')?.touched && searchForm.get('amount')?.invalid"
               formControlName="amount" name="amount" id="amount" class="form-control">
+        <option>3</option>
         <option selected>25</option>
         <option>50</option>
         <option>100</option>
@@ -114,9 +110,16 @@
       </div>
 
     </div>
-    <button class="btn btn-primary ml-5" type="submit" >Send filter</button>
-
-
+    <div class="row d-flex justify-content-center align-self-center mt-3">
+        <button mat-icon-button color="dark-grey"  (click)="prevPage()">
+          <mat-icon><i class="fas fa-arrow-alt-circle-left"></i></mat-icon>
+        </button>
+    <button class="btn btn-primary ml-5 mr-5" type="submit" >Search</button>
+      <button mat-icon-button color="dark-grey" (click)="nextPage()">
+        <mat-icon><i class="fas fa-arrow-alt-circle-right"></i></mat-icon>
+      </button>
+    </div>
+    <p>{{searchForm.value.page}}</p>
   </form>
 </div>
 
