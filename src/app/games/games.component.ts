@@ -79,6 +79,9 @@ export class GamesComponent implements OnInit {
     this.gameService.gameList().subscribe(
       data => {
         this.games = data;
+        for (let i = 0; i < this.games.length; i++) {
+          this.games[i].timestamp = (moment(this.games[i].timestamp)).format('DD-MM-YYYY HH:mm')
+        }
       },
       err => {
         console.log(err);
@@ -115,6 +118,9 @@ export class GamesComponent implements OnInit {
 
       data => {
         this.games = data;
+        for (let i = 0; i < this.games.length; i++) {
+          this.games[i].timestamp = (moment(this.games[i].timestamp)).format('DD-MM-YYYY HH:mm')
+        }
       },
       err => {
         console.log(err);
