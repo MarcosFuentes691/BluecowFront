@@ -1,24 +1,68 @@
 <app-menu></app-menu>
-<div class="container bg-dark">
-  <table class="table table-dark">
+<div class="container-fluid mb-4">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="row mt-3 rowStyle">
+      <div class="col-2">
+        Time
+        <select [class.is-invalid]="searchForm.get('time')?.touched && searchForm.get('time')?.invalid"
+                formControlName="time" name="time" id="time" class="form-control">
+          <option selected>Always</option>
+          <option>Today</option>
+          <option>Last week</option>
+          <option>Last month</option>
+          <option value="Custom">Custom</option>
+        </select>
+      </div>
+      <div class="col-3"  *ngIf="searchForm.value.time == 'Custom'" >
+        <mat-form-field appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+          <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-1 d-flex align-items-center">
+        <button class="btn btn-primary ml-5 mr-5" type="submit" >Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container bg-dark p-0">
+  <table class="table table-bordered table-dark align-middle" id="bootstrap-overrides" matSort (matSortChange)="sortData($event)">
     <thead>
     <tr>
-      <th scope="col">hero</th>
-      <th scope="col">place</th>
-      <th scope="col">mmr</th>
-      <th scope="col">timestamp</th>
-      <th scope="col">imageUrl</th>
-      <th scope="col">Games</th>
+      <th mat-sort-header="name" scope="col">Hero</th>
+      <th mat-sort-header="gamesPlayed" scope="col">Games</th>
+      <th mat-sort-header="avgPlace" scope="col">Avg. Place</th>
+      <th mat-sort-header="mmr" scope="col">MMR +/-</th>
+      <th mat-sort-header="lastUse" scope="col">Last use</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let hero of heroes">
-      <td>{{hero.name}}</td>
-      <td>{{hero.avgPlace}}</td>
-      <td>{{hero.mmr}}</td>
-      <td>{{hero.lastUse}}</td>
-      <td>{{hero.heroUrl}}</td>
+    <tr *ngFor="let hero of heroes" class="pos{{round(hero.avgPlace)}}">
+      <td>
+        <a href="todo/heroThisHero">
+          <img src="/assets/images/{{hero.name}}.png" alt="image" style="width: 70px; height: 70px;"><br>
+          <p class="pos{{round(hero.avgPlace)}} m-0">{{hero.name}}</p>
+        </a>
+      </td>
       <td>{{hero.gamesPlayed}}</td>
+      <td>{{ hero.avgPlace | number:'1.2-2' }}</td>
+      <td>{{hero.mmr}}</td>
+      <td>
+        <a href="todo/thisdate">
+          <p class="pos{{round(hero.avgPlace)}} m-0">{{hero.lastUse}}</p>
+        </a>
+      </td>
+
     </tr>
     </tbody>
   </table>
