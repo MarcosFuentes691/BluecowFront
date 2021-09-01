@@ -104,7 +104,7 @@
         <option value="Custom">Custom</option>
       </select>
       </div>
-      <div class="col-2"  *ngIf="searchForm.value.time == 'Custom'" >
+      <div class="col-3"  *ngIf="searchForm.value.time == 'Custom'" >
       <mat-form-field appearance="fill">
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
