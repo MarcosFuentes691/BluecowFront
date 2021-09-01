@@ -27,24 +27,24 @@ export class HeroService {
 
 
 
-  public getHero(hero:string,from:string,to:string): Observable<Hero> {
+  public getHero(hero:string,from:string,to:string,timeZone:string): Observable<Hero> {
     this.gameURL=this.gameURL2+'/search';
     if(from==null)
       from='2000-01-01 11:11:11.111';
     if(to==null)
       to='2030-01-01 11:11:11.111';
-    let params = new HttpParams().set('hero', hero).set('from',from).set('to',to);
+    let params = new HttpParams().set('hero', hero).set('from',from).set('to',to).set('timeZone',timeZone);
     return this.http.get<Hero>(this.gameURL,
       { headers: new HttpHeaders({'Content-Type' : 'application/json'}),params});
   }
 
-  public getAllHeroes(from:string,to:string):Observable<Hero[]>{
+  public getAllHeroes(from:string,to:string,timeZone:string):Observable<Hero[]>{
     this.gameURL=this.gameURL2+'/all';
     if(from==null)
       from='2000-01-01 11:11:11.111';
     if(to==null)
       to='2030-01-01 11:11:11.111';
-    let params = new HttpParams().set('from',from).set('to',to);
+    let params = new HttpParams().set('from',from).set('to',to).set('timeZone',timeZone);
     return this.http.get<Hero[]>(this.gameURL,
       { headers: new HttpHeaders({'Content-Type' : 'application/json'}),params});
   }
