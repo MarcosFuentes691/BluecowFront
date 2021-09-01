@@ -4,6 +4,8 @@ import {Sort} from '@angular/material/sort';
 import {GameService} from "../services/game.service";
 import {GamesComponent} from "../games/games.component";
 import * as moment from "moment";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-game-table',
@@ -14,15 +16,32 @@ export class GameTableComponent implements OnInit {
 
   @Input() games!: Game[];
   isModify: boolean=true;
+  closeResult = '';
+  gameForm!:FormGroup;
+  customDate:boolean=false;
+
+
 
   constructor(
     private gameService: GameService,
     private gamesComponent: GamesComponent,
+    private modalService: NgbModal,
   ) {
   }
 
   ngOnInit(): void {
+    this.gameForm = new FormGroup({
+      hero: new FormControl('',Validators.required),
+      place: new FormControl('',[Validators.max(8),Validators.min(1)]),
+      mmr: new FormControl('',Validators.required),
+      timestamp:new FormControl('',Validators.required),
+      date: new FormControl('', [Validators.required]),
+      hour: new FormControl('', [Validators.required]),
+    });
+  }
 
+  onSubmit() {
+    console.log("was subitmi");
   }
 
   sortData(sort: Sort) {
@@ -71,8 +90,33 @@ export class GameTableComponent implements OnInit {
     }
   }
 
-  editGame(id: number) {
+  editGame() {
+    console.log(this.gameForm.value);
     alert("Not implemented yet");
+  }
+
+  open(content: any, game: Game) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      console.log(result);
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  onItemChange() {
+    this.customDate=!this.customDate;
+  }
+
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
 

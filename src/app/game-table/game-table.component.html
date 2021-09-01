@@ -1,3 +1,97 @@
+<ng-template #content let-modal>
+  <form [formGroup]="gameForm" (ngSubmit)="editGame()">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit a game</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="row rows m-3">
+        <div class="col-4">
+          Hero <select [class.is-invalid]="gameForm.get('hero')?.touched && gameForm.get('hero')?.invalid"
+                       class="form-control" formControlName="hero">
+          <option selected>All</option>
+          <option>Akazamzarak</option>
+          <option>Al'akir</option>
+          <option>Alexstrasza</option>
+          <option>Aranna</option>
+          <option>Bigglesworth</option>
+          <option>Blackthorn</option>
+          <option>Brann</option>
+          <option>C'thun</option>
+          <option>Chenvaala</option>
+          <option>Curator</option>
+          <option>Deathwing</option>
+          <option>Deryl</option>
+          <option>Edwin</option>
+          <option>Elise</option>
+          <option>Eudora</option>
+          <option>Flurgl</option>
+          <option>Galakrond</option>
+          <option>Galewing</option>
+          <option>Gallywix</option>
+          <option>George</option>
+          <option>Greybough</option>
+          <option>Guff</option>
+          <option>Hooktusk</option>
+          <option>Illidan</option>
+          <option>Jandice</option>
+          <option>Jaraxxus</option>
+          <option>Kaelthas</option>
+          <option>Kragg</option>
+          <option>Kurtrus</option>
+          <option>Lich Baz'hial</option>
+          <option>Lich King</option>
+          <option>Lord Barov</option>
+          <option>Maiev</option>
+          <option>Malygos</option>
+          <option>Millhouse</option>
+          <option>Millificent</option>
+          <option>Mukla</option>
+          <option>Mutanus</option>
+          <option>Nozdormu</option>
+          <option>N'Zoth</option>
+          <option>Omu</option>
+          <option>Patches</option>
+          <option>Patchwerk</option>
+          <option>Pyramad</option>
+          <option>Rafaam</option>
+          <option>Ragnaros</option>
+          <option>Rakanishu</option>
+          <option>Rat King</option>
+          <option>Reno</option>
+          <option>Saurfang</option>
+          <option>Silas</option>
+          <option>Sindragosa</option>
+          <option>Tess</option>
+          <option>Tickatus</option>
+          <option>Toki</option>
+          <option>Voljin</option>
+          <option>Wagtoggle</option>
+          <option>Xyrella</option>
+          <option>Y'Shaarj</option>
+          <option>Yogg</option>
+          <option>Ysera</option>
+          <option>Zephrys</option>
+        </select>
+        </div>
+        <div class="col-4">
+          Place <input [class.is-invalid]="gameForm.get('place')?.touched && gameForm.get('place')?.invalid"
+                       type="number" class="form-control" formControlName="place" placeholder="">
+        </div>
+        <div class="col-4">
+          MMR <input [class.is-invalid]="gameForm.get('mmr')?.touched && gameForm.get('mmr')?.invalid"
+                     type="number" class="form-control" formControlName="mmr" placeholder="">
+        </div>
+      </div>
+  </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary"  type="submit" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </form>
+</ng-template>
+
 <div class="container bg-dark p-0">
   <table class="table table-bordered table-dark align-middle" id="bootstrap-overrides" matSort (matSortChange)="sortData($event)">
     <thead>
@@ -39,7 +133,7 @@
         <button class="btn btn-danger" type="submit">Delete</button>
         </form>
         <br>
-        <form (click)="editGame(game.id)">
+        <form (click)="open(content,game)">
           <button class="btn btn-warning pl-3 pr-3" type="submit">Edit</button>
         </form>
           <br>
