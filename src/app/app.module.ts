@@ -24,7 +24,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { HttpClientModule } from '@angular/common/http';
 import { productoInterceptor } from './interceptors/producto.interceptor';
 import { gameInterceptor } from './interceptors/game.interceptor';
-
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 // social login
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
@@ -38,8 +38,9 @@ import {GameEntryComponent} from "./gameEntry/gameEntry.component";
 import { GameTableComponent } from './game-table/game-table.component';
 import {MatSortModule} from "@angular/material/sort";
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule, MomentDateModule} from "@angular/material-moment-adapter";
-import {MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
-
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -53,30 +54,37 @@ import {MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
     GameEntryComponent,
     GameTableComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        SocialLoginModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        MatSliderModule,
-        MatDatepickerModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatInputModule,
-        MatSelectModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatCardModule,
-        MatProgressBarModule,
-        MatIconModule,
-        BrowserAnimationsModule,
-        MatSortModule,
-        MatMomentDateModule,
-        MomentDateModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SocialLoginModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatSliderModule,
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatSortModule,
+    MatMomentDateModule,
+    MomentDateModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMaterialTimepickerModule,
+    FormsModule,
+    NgbModule,
+
+
+  ],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
