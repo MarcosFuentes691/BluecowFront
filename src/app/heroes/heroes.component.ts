@@ -141,6 +141,13 @@ export class HeroesComponent implements OnInit {
       }
     });
   }
+
+  takeHourOut(timestamp:any){
+    let year=timestamp.substring(6, 10);
+    let month=timestamp.substring(3, 5);
+    let day=timestamp.substring(0, 2);
+    return year+'-'+month+'-'+day;
+  }
 }
 
 function compare(a: number | string, b: number | string, isAsc: boolean) {

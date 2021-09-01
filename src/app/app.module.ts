@@ -42,6 +42,8 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { NgxChartsModule }from '@swimlane/ngx-charts';
+import { DateStatsComponent } from './date-stats/date-stats.component';
+import { StatsGroupComponent } from './stats-group/stats-group.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { NgxChartsModule }from '@swimlane/ngx-charts';
     HeroesComponent,
     GameEntryComponent,
     GameTableComponent,
+    DateStatsComponent,
+    StatsGroupComponent,
   ],
   imports: [
     BrowserModule,

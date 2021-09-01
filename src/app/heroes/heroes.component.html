@@ -58,7 +58,7 @@
       <td>{{ hero.avgPlace | number:'1.2-2' }}</td>
       <td>{{hero.mmr}}</td>
       <td>
-        <a href="todo/thisdate">
+        <a href="date/{{takeHourOut(hero.lastUse)}}">
           <p class="pos{{round(hero.avgPlace)}} m-0">{{hero.lastUse}}</p>
         </a>
       </td>

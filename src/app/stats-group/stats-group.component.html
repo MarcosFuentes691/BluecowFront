@@ -1,0 +1,144 @@
+<div class="container fluid ">
+<div class="card-deck justify-content-center">
+  <div class="row mb-5 ">
+    <div class="card bg-dark text-white cardStyle mr-4 ml-4">
+      <div class="row p-0">
+        <div class="col-8">
+          <div class="card-body p-1 align-self-center">
+            <h2 class="card-title align-self-center">Games played</h2>
+          </div>
+        </div>
+        <div class="col-4">
+        <div class="card-body text-danger p-1 align-self-center">
+          <h1 class="card-title align-self-center font-weight-bold">{{stats.gamesPlayed}}</h1>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-dark text-white cardStyle mr-4 ml-4">
+      <div class="row p-0">
+        <div class="col-8">
+          <div class="card-body p-1 align-self-center">
+            <h2 class="card-title align-self-center">Games p/day</h2>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card-body text-danger p-1 align-self-center">
+            <h1 class="card-title align-self-center font-weight-bold">{{stats.gamesPlayed}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-dark text-white cardStyle mr-4 ml-4">
+      <div class="row p-0">
+        <div class="col-8">
+          <div class="card-body p-1 align-self-center">
+            <h2 class="card-title align-self-center">Avg MMR +/-</h2>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card-body text-danger p-1 align-self-center">
+            <h1 class="card-title align-self-center font-weight-bold">{{stats.avgMmrGain}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+  </div>
+  <div class="card-deck justify-content-center">
+    <div class="row mb-4 ">
+      <div class="card bg-dark text-white cardStyle mr-4 ml-4">
+        <div class="row p-0">
+          <div class="col-8">
+            <div class="card-body p-1 align-self-center">
+              <h2 class="card-title align-self-center">Best MMR</h2>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card-body text-danger p-1 align-self-center">
+              <h1 class="card-title align-self-center font-weight-bold">{{stats.bestMmr}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-dark text-white cardStyle mr-4 ml-4">
+        <div class="row p-0">
+          <div class="col-8">
+            <div class="card-body p-1 align-self-center">
+              <h2 class="card-title align-self-center">Average MMR</h2>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card-body text-danger p-1 align-self-center">
+              <h1 class="card-title align-self-center font-weight-bold">{{stats.avgMmr}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-dark text-white cardStyle mr-4 ml-4">
+        <div class="row p-0">
+          <div class="col-8">
+            <div class="card-body p-1 align-self-center">
+              <h2 class="card-title align-self-center">Worst MMR</h2>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card-body text-danger p-1 align-self-center">
+              <h1 class="card-title align-self-center font-weight-bold">{{stats.worstMmr}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="card-deck justify-content-center">
+    <div class="card"
+         style="background :radial-gradient(circle,
+			rgba(74,204,113,0.7035189075630253) 17%, rgba(49,151,80,0.96) 50%, rgba(5,56,21,1) 88%)
+			,url('/assets/images/squares/{{stats.bestHero}}.jpg') center center no-repeat; color:white;">
+    <div class="card-body">
+      <h1 class="card-title">Best hero</h1>
+      <br>
+      <h2>
+        {{stats.bestHeroNumber}}
+      </h2><br> <br> <a
+      href="/hero/{{stats.bestHero}}"
+      style="font-size: 90%;" class="btn btn-secondary">Hero
+      Profile</a>
+    </div>
+  </div>
+    <div class="card"
+         style="background :radial-gradient(circle, rgba(0,212,255,0.3953781341638217) 0%, rgba(9,9,121,0.9239775739397321) 64%, rgba(2,0,36,1) 100%)
+			,url('/assets/images/squares/{{stats.mostHero}}.jpg') center center no-repeat; color:white;">
+
+      <div class="card-body">
+        <h1 class="card-title">Most played hero</h1>
+        <br>
+        <h2>
+          {{stats.mostHeroNumber}}
+        </h2><br> <br> <a
+        href="/hero/{{stats.mostHeroNumber}}"
+        style="font-size: 90%;" class="btn btn-secondary">Hero
+        Profile</a>
+      </div>
+    </div>
+    <div class="card"
+         style="background :radial-gradient(circle,rgba(204,36,56,0.7035189075630253) 17%, rgba(151,25,40,0.96) 56%, rgba(56,3,10,0.91) 88%)
+			,url('/assets/images/squares/{{stats.worstHero}}.jpg') center center no-repeat; color:white;">
+      <div class="card-body">
+        <h1 class="card-title">Worst hero</h1>
+        <br>
+        <h2>
+          {{stats.worstHeroNumber}}
+        </h2><br> <br> <a
+        href="/hero/{{stats.worstHero}}"
+        style="font-size: 90%;" class="btn btn-secondary">Hero
+        Profile</a>
+      </div>
+    </div>
+  </div>
+</div>
