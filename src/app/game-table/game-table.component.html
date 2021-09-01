@@ -109,7 +109,7 @@
     <tr *ngFor="let game of games" class="pos{{game.place}}">
       <td>{{game.id}}</td>
       <td>
-        <a href="todo/heroThisHero">
+        <a href="hero/{{game.hero}}">
           <img src="/assets/images/{{game.hero}}.png" alt="image" style="width: 70px; height: 70px;"><br>
           <p class="pos{{game.place}} m-0">{{game.hero}}</p>
         </a>

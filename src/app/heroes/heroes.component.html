@@ -49,7 +49,7 @@
     <tbody>
     <tr *ngFor="let hero of heroes" class="pos{{round(hero.avgPlace)}}">
       <td>
-        <a href="todo/heroThisHero">
+        <a href="hero/{{hero.name}}">
           <img src="/assets/images/{{hero.name}}.png" alt="image" style="width: 70px; height: 70px;"><br>
           <p class="pos{{round(hero.avgPlace)}} m-0">{{hero.name}}</p>
         </a>

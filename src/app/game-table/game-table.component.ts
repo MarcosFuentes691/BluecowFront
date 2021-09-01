@@ -24,7 +24,6 @@ export class GameTableComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private gamesComponent: GamesComponent,
     private modalService: NgbModal,
   ) {
   }
