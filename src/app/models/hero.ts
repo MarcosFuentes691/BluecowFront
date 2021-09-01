@@ -7,5 +7,6 @@ export class Hero {
     heroUrl!:string;
     gamesPlayed!:number;
     lastUseDate!:Date;
+    positions!:any;
 }
 
