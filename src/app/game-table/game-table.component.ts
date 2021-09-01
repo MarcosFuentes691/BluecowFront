@@ -58,8 +58,7 @@ export class GameTableComponent implements OnInit {
   }
 
   deleteGame(id:number) {
-    if(confirm("Are you sure to delete this game")) {
-      console.log("Implement delete functionality here");
+    if(confirm("Are you sure you want to delete this game?")) {
       this.gameService.deleteGame(id).subscribe(
         data => {
           console.log(data);
@@ -70,6 +69,10 @@ export class GameTableComponent implements OnInit {
       );
       this.games.splice(0,1);
     }
+  }
+
+  editGame(id: number) {
+    alert("Not implemented yet");
   }
 }
 
