@@ -7,5 +7,7 @@ export class Game {
     mmr!:number;
     timestamp:any;
     difference!:number;
+    timeDate!:Date;
+    modify:boolean = true;
 }
 
