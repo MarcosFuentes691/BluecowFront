@@ -6,6 +6,7 @@ import { GamesComponent } from './games/games.component';
 import { GameGuard } from './guards/game.guard';
 import { HeroComponent } from './hero/hero.component';
 import {HeroesComponent} from "./heroes/heroes.component";
+import {GameEntryComponent} from "./gameEntry/gameEntry.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,7 +21,9 @@ const routes: Routes = [
   {path: 'heroes', component: HeroesComponent },
   {path: 'heroes/:from', component: HeroesComponent },
   {path: 'heroes/:to', component: HeroesComponent },
-  {path: 'heroes/:from:to', component: HeroesComponent }
+  {path: 'heroes/:from:to', component: HeroesComponent },
+  {path: 'newGame', component: GameEntryComponent },
+
   //{path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
