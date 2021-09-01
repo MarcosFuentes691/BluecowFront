@@ -80,7 +80,9 @@ export class GamesComponent implements OnInit {
       data => {
         this.games = data;
         for (let i = 0; i < this.games.length; i++) {
-          this.games[i].timestamp = (moment(this.games[i].timestamp)).format('DD-MM-YYYY HH:mm')
+          this.games[i].timeDate = new Date((moment(this.games[i].timestamp)).format());
+          this.games[i].timestamp = (moment(this.games[i].timestamp)).format('DD-MM-YYYY HH:mm');
+
         }
       },
       err => {
@@ -119,7 +121,9 @@ export class GamesComponent implements OnInit {
       data => {
         this.games = data;
         for (let i = 0; i < this.games.length; i++) {
-          this.games[i].timestamp = (moment(this.games[i].timestamp)).format('DD-MM-YYYY HH:mm')
+          this.games[i].timeDate = new Date((moment(this.games[i].timestamp)).format());
+          this.games[i].timestamp = (moment(this.games[i].timestamp)).format('DD-MM-YYYY HH:mm');
+
         }
       },
       err => {
