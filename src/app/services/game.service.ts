@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, ViewChild} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Game } from '../models/game';
@@ -25,5 +25,11 @@ export class GameService {
 
   public addGame(game: Game):Observable<Game>{
     return this.httpClient.post<Game>(this.gameURL+'add', game);
+  }
+
+  public deleteGame(gameId:number):Observable<any>{
+    console.log("GOla2");
+    let params = new HttpParams().set('id', gameId);
+    return this.httpClient.delete<number>(this.gameURL+'delete', { headers: new HttpHeaders({'Content-Type' : 'application/json'}),params});
   }
 }

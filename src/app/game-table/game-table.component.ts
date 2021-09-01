@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Game} from "../models/game";
 import {Sort} from '@angular/material/sort';
+import {GameService} from "../services/game.service";
+import {GamesComponent} from "../games/games.component";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-game-table',
@@ -10,8 +13,12 @@ import {Sort} from '@angular/material/sort';
 export class GameTableComponent implements OnInit {
 
   @Input() games!: Game[];
+  isModify: boolean=true;
 
-  constructor() {
+  constructor(
+    private gameService: GameService,
+    private gamesComponent: GamesComponent,
+  ) {
   }
 
   ngOnInit(): void {
@@ -39,15 +46,42 @@ export class GameTableComponent implements OnInit {
         case 'place':
           return compare(a.place, b.place, isAsc);
         case 'timestamp':
-          return compare(a.timestamp.toString(), b.timestamp.toString(), isAsc);
+          return compareDate(a.timeDate, b.timeDate, isAsc);
         default:
           return 0;
       }
     });
   }
 
+  modify(game:Game){
+    game.modify=!game.modify;
+  }
+
+  deleteGame(id:number) {
+    if(confirm("Are you sure to delete this game")) {
+      console.log("Implement delete functionality here");
+      this.gameService.deleteGame(id).subscribe(
+        data => {
+          console.log(data);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+      this.games.splice(0,1);
+    }
+  }
 }
 
 function compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+
+
+function compareInt(a: number, b: number, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+
+function compareDate(a: Date, b: Date, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

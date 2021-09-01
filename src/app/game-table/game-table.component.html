@@ -8,6 +8,7 @@
       <th mat-sort-header="mmr" scope="col">Mmr</th>
       <th mat-sort-header="difference" scope="col">Difference</th>
       <th mat-sort-header="timestamp" scope="col">Timestamp</th>
+      <th scope="col">Modify</th>
     </tr>
     </thead>
     <tbody>
@@ -26,6 +27,26 @@
         <a href="todo/thisdate">
           <p class="pos{{game.place}} m-0">{{game.timestamp}}</p>
         </a>
+      </td>
+      <td>
+        <div *ngIf="!game.modify">
+        <form (click)="modify(game)">
+          <button class="btn btn-primary" type="submit">Modify</button>
+        </form>
+        </div>
+        <div *ngIf="game.modify">
+        <form (click)="deleteGame(game.id)">
+        <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+        <br>
+        <form (click)="deleteGame(game.id)">
+          <button class="btn btn-warning pl-3 pr-3" type="submit">Edit</button>
+        </form>
+          <br>
+          <form (click)="modify(game)">
+            <button class="btn btn-primary pl-3 pr-3" type="submit"><i class="fas fa-arrow-left"></i></button>
+          </form>
+        </div>
       </td>
     </tr>
     </tbody>
