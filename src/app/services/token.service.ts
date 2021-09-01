@@ -9,7 +9,7 @@ export class TokenService {
 
   constructor() { }
 
-  
+
   public setToken(token: string): void {
     sessionStorage.removeItem(TOKEN_KEY);
     sessionStorage.setItem(TOKEN_KEY, token);
@@ -18,6 +18,7 @@ export class TokenService {
   public getToken(): string|null {
     return sessionStorage.getItem(TOKEN_KEY);
   }
+
 
   logOut(): void {
     sessionStorage.clear();

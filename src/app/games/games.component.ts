@@ -4,7 +4,7 @@ import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { Game } from '../models/game';
 import { GameService } from '../services/game.service';
 import { TokenService } from '../services/token.service';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserService} from "../services/user.service";
 import * as moment from 'moment';
 import {waitForAsync} from "@angular/core/testing";
@@ -44,10 +44,12 @@ export class GamesComponent implements OnInit {
   }
 
 
+  header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
 
-  ngOnInit():  void {
-    this.httpClient.get(this.oauthURL + 'check').subscribe(
+  ngOnInit(): void {
+    this.httpClient.get(this.oauthURL + 'check',this.header).subscribe(
       data => {
+        console.log(data);
         if(Object.values(data)[0] == true){
           this.userLogged=this.userService.initUserLogged(data);
           this.isLogged = true;
@@ -55,13 +57,14 @@ export class GamesComponent implements OnInit {
         else{
           this.authService.authState.subscribe(
             data => {
+              console.log(data);
               this.userLogged = data;
               this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
             }
           );
         }
       }
-    )
+    );
     this.range = new FormGroup({
       start: new FormControl(),
       end: new FormControl()

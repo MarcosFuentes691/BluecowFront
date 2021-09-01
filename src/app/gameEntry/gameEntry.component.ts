@@ -4,7 +4,7 @@ import { TokenService } from '../services/token.service';
 import { HeroService } from '../services/hero.service';
 import { Hero } from '../models/hero';
 import { ActivatedRoute } from '@angular/router';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Game} from "../models/game";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {GameService} from "../services/game.service";
@@ -26,6 +26,7 @@ export class GameEntryComponent implements OnInit {
   gameForm!:FormGroup;
   customDate:boolean=false;
 
+  header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
 
   closeResult = '';
 
@@ -54,22 +55,24 @@ export class GameEntryComponent implements OnInit {
       date: new FormControl('', [Validators.required]),
       hour: new FormControl('', [Validators.required]),
     });
-    this.httpClient.get(this.oauthURL + 'check').subscribe(
-      data => {
-        if(Object.values(data)[0] == true){
-          this.userLogged=this.userService.initUserLogged(data);
-          this.isLogged = true;
+      this.httpClient.get(this.oauthURL + 'check',this.header).subscribe(
+        data => {
+          console.log(data);
+          if(Object.values(data)[0] == true){
+            this.userLogged=this.userService.initUserLogged(data);
+            this.isLogged = true;
+          }
+          else{
+            this.authService.authState.subscribe(
+              data => {
+                console.log(data);
+                this.userLogged = data;
+                this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
+              }
+            );
+          }
         }
-        else{
-          this.authService.authState.subscribe(
-            data => {
-              this.userLogged = data;
-              this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
-            }
-          );
-        }
-      }
-    )
+      );
 
   }
 

@@ -4,7 +4,7 @@ import { TokenService } from '../services/token.service';
 import { HeroService } from '../services/hero.service';
 import { Hero } from '../models/hero';
 import { ActivatedRoute } from '@angular/router';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Game} from "../models/game";
 import {UserService} from "../services/user.service";
 import * as moment from "moment";
@@ -13,7 +13,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
-  selector: 'app-hero',
+  selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
@@ -44,23 +44,27 @@ export class HeroesComponent implements OnInit {
   timeZone:string = "0";
   private sub: any;
   Math: any;
+  header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
 
   ngOnInit(): void {
-    this.httpClient.get(this.oauthURL + 'check').subscribe(
+    this.httpClient.get(this.oauthURL + 'check',this.header).subscribe(
       data => {
-        if (Object.values(data)[0] == true) {
-          this.userLogged = this.userService.initUserLogged(data);
+        console.log(data);
+        if(Object.values(data)[0] == true){
+          this.userLogged=this.userService.initUserLogged(data);
           this.isLogged = true;
-        } else {
+        }
+        else{
           this.authService.authState.subscribe(
             data => {
+              console.log(data);
               this.userLogged = data;
               this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
             }
           );
         }
       }
-    )
+    );
     this.searchForm = new FormGroup({
       time: new FormControl('Always',Validators.required),
     });

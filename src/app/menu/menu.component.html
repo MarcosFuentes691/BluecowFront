@@ -22,6 +22,12 @@
               <a class="nav-link" routerLink="/heroes">
                 <i class="fas fa-users"></i> Heroes</a>
             </li>
+
+            <li class="nav-item active" *ngIf="isLogged">
+              <a class="nav-link" routerLink="/hero">
+                <i class="fas fa-cat"></i>         Hero, temporary here</a>
+            </li>
+
           </ul>
 
           <ul class="navbar-nav ml-auto" *ngIf="isLogged">

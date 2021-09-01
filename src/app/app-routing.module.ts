@@ -11,20 +11,12 @@ import {GameEntryComponent} from "./gameEntry/gameEntry.component";
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'games', component: GamesComponent ,canActivate: [GameGuard] },
-  {path: 'hero/:hero/:from/:to', component: HeroComponent },
-  {path: 'hero/:hero/:from', component: HeroComponent },
-  {path: 'hero/:hero/:to', component: HeroComponent },
+  {path: 'games', component: GamesComponent},
   {path: 'hero/:hero', component: HeroComponent },
-  {path: 'hero/:from', component: HeroComponent },
-  {path: 'hero/:to', component: HeroComponent },
   {path: 'heroes', component: HeroesComponent },
-  {path: 'heroes/:from', component: HeroesComponent },
-  {path: 'heroes/:to', component: HeroesComponent },
-  {path: 'heroes/:from:to', component: HeroesComponent },
+  {path: 'hero', component: HeroComponent },
   {path: 'newGame', component: GameEntryComponent },
-
-  //{path: '**', redirectTo: '', pathMatch: 'full'}
+  {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({

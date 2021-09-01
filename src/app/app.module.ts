@@ -100,7 +100,6 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
         ],
       } as SocialAuthServiceConfig,
     },
-    productoInterceptor,
     gameInterceptor,
     {
       provide: MAT_DATE_FORMATS,
