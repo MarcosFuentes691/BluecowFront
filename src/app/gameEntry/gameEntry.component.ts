@@ -9,8 +9,6 @@ import {Game} from "../models/game";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {GameService} from "../services/game.service";
 import {UserService} from "../services/user.service";
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {MatDialogModule} from '@angular/material/dialog';
 
 
 @Component({
@@ -39,7 +37,6 @@ export class GameEntryComponent implements OnInit {
     private route: ActivatedRoute,
     private httpClient: HttpClient,
     private userService: UserService,
-    private modalService: NgbModal,
   ) { }
 
   hero!: Hero;
@@ -100,23 +97,6 @@ export class GameEntryComponent implements OnInit {
     this.customDate=!this.customDate;
   }
 
-  open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
 
 }
 
