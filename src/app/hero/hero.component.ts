@@ -30,7 +30,7 @@ export class HeroComponent implements OnInit {
     private userService: UserService,
   ) { }
 
-  hero!: Hero;
+  hero: Hero = new Hero();
   heroString!: string;
   from:string = 'Always';
   to:string  = 'now';
@@ -41,7 +41,6 @@ export class HeroComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient.get(this.oauthURL + 'check',this.header).subscribe(
       data => {
-        console.log(data);
         if(Object.values(data)[0] == true){
           this.userLogged=this.userService.initUserLogged(data);
           this.isLogged = true;
@@ -49,7 +48,6 @@ export class HeroComponent implements OnInit {
         else{
           this.authService.authState.subscribe(
             data => {
-              console.log(data);
               this.userLogged = data;
               this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
             }

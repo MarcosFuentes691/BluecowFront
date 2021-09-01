@@ -61,6 +61,8 @@ export class LoginComponent implements OnInit {
       this.socialUser.name=this.loginForm.value.username;
       this.oauthService.user(this.loginForm.value).subscribe(
           res => {
+            localStorage.removeItem('AuthToken');
+            localStorage.setItem('AuthToken',res.value);
             this.tokenService.setToken(res.value);
             this.isLogged = true;
             this.router.navigate(['/']);
@@ -80,6 +82,8 @@ export class LoginComponent implements OnInit {
         const tokenGoogle = new TokenDto(this.socialUser.idToken);
         this.oauthService.google(tokenGoogle).subscribe(
           res => {
+            localStorage.removeItem('AuthToken');
+            localStorage.setItem('AuthToken',res.value);
             this.tokenService.setToken(res.value);
             this.isLogged = true;
             this.router.navigate(['/']);

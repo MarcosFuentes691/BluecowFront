@@ -50,6 +50,7 @@ export class MenuComponent implements OnInit {
   }
 
   logOut(): void {
+    localStorage.clear();
     this.authService.signOut().then(
       data => {
         this.tokenService.logOut();
