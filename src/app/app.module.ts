@@ -41,6 +41,7 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule, MomentDateModule} 
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { NgxChartsModule }from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     NgxMaterialTimepickerModule,
     FormsModule,
     NgbModule,
+    NgxChartsModule,
 
 
   ],
