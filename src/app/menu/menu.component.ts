@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { SocialUser, SocialAuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
 import { TokenService } from '../services/token.service';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserService} from "../services/user.service";
+import {Stats} from "../models/stats";
 
 
 
@@ -17,6 +18,7 @@ export class MenuComponent implements OnInit {
   userLogged: SocialUser = new SocialUser;
   isLogged: boolean = false;
   oauthURL = 'http://localhost:8080/oauth/';
+  @Input() title!: string;
 
   constructor(
     private authService: SocialAuthService,
