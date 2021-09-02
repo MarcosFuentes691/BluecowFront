@@ -44,6 +44,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { NgxChartsModule }from '@swimlane/ngx-charts';
 import { DateStatsComponent } from './date-stats/date-stats.component';
 import { StatsGroupComponent } from './stats-group/stats-group.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { StatsGroupComponent } from './stats-group/stats-group.component';
     GameTableComponent,
     DateStatsComponent,
     StatsGroupComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
