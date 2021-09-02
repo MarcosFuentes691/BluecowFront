@@ -1,3 +1,23 @@
-<app-menu></app-menu>
-<p>{{dateString}}</p>
+<app-menu [title]="dateString"></app-menu>
+<div class="container pt-4 bg-dark">
 <app-stats-group [stats]="stats"></app-stats-group>
+
+<div class="d-flex align-items-center justify-content-center text-white">
+  <ngx-charts-bar-vertical
+    [view]="[1000,400]"
+    [results]="positionsValues"
+    [xAxisLabel]="'Positions'"
+    [legendTitle]="'Positions'"
+    [yAxisLabel]="'Times each'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [scheme]="'flame'"
+    [gradient]="true"  style="fill: white;">>
+  </ngx-charts-bar-vertical>
+</div>
+</div>
+<app-game-table [games]=games></app-game-table>
+<app-footer></app-footer>

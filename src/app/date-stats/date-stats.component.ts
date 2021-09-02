@@ -35,6 +35,8 @@ export class DateStatsComponent implements OnInit {
   dateString!:string;
   private from!: string;
   private to!: string;
+  games!: Game[];
+  positionsValues!: ({ name: string; value: any } | { name: string; value: any } | { name: string; value: any } | { name: string; value: any } | { name: string; value: any } | { name: string; value: any } | { name: string; value: any } | { name: string; value: any })[];
 
 
   constructor(
@@ -83,7 +85,35 @@ export class DateStatsComponent implements OnInit {
       this.dateService.searchDate(this.from,this.to,this.timeZone).subscribe(
         data => {
           this.stats=data;
+          this.positionsValues = [
+            { name: "N° 8", value: this.stats.positions[7] },
+            { name: "N° 7", value: this.stats.positions[6] },
+            { name: "N° 6", value: this.stats.positions[5] },
+            { name: "N° 5", value: this.stats.positions[4] },
+            { name: "N° 4", value: this.stats.positions[3] },
+            { name: "N° 3", value: this.stats.positions[2] },
+            { name: "N° 2", value: this.stats.positions[1] },
+            { name: "N° 1", value: this.stats.positions[0] },
+          ];
           console.log(data);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+      this.to = moment(this.dateString).add(1,"day").format("YYYY-MM-DD HH:mm:ss.SSS");
+      this.gameService.searchGameList("All",
+        0,
+        50,
+        this.from,
+        this.to,
+        this.timeZone).subscribe(
+        data => {
+          this.games = data;
+          for (let i = 0; i < this.games.length; i++) {
+            this.games[i].timeDate = new Date((moment(this.games[i].timestamp)).format());
+            this.games[i].timestamp = (moment(this.games[i].timestamp)).format('DD-MM-YYYY HH:mm');
+          }
         },
         err => {
           console.log(err);

@@ -13,4 +13,6 @@ export class Stats {
   worstHeroNumber!: number
   time!: string
   positions!:any;
+  startMmr!: number
+  endMmr!: number
 }
