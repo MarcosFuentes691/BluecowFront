@@ -92,6 +92,7 @@ export class GameEntryComponent implements OnInit {
     this.gameService.addGame(game).subscribe(
       data=>{
         console.log(data);
+        window.alert("Game added correctly");
       }
     );
   }
