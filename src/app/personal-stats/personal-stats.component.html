@@ -1,0 +1,25 @@
+<app-menu [title]="title"></app-menu>
+<div class="container pt-4 bg-dark">
+
+<div class="container-fluid mb-4">
+  <ul class="nav nav-pills nav-justified">
+    <li class="nav-item">
+      <button class="btn btn-primary" (click)="chooseStats(0)" >Today</button>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-primary" (click)="chooseStats(1)" >Last week</button>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-primary" (click)="chooseStats(2)" >Last month</button>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-primary" (click)="chooseStats(3)" >Last 3 months</button>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-primary" (click)="chooseStats(4)" >Always</button>
+    </li>
+  </ul>
+</div>
+  <app-stats-group [stats]="getStats()"></app-stats-group>
+</div>
+<app-footer></app-footer>
