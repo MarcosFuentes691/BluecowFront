@@ -8,6 +8,7 @@ import { HeroComponent } from './hero/hero.component';
 import {HeroesComponent} from "./heroes/heroes.component";
 import {GameEntryComponent} from "./gameEntry/gameEntry.component";
 import {DateStatsComponent} from "./date-stats/date-stats.component";
+import {PersonalStatsComponent} from "./personal-stats/personal-stats.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,7 +19,9 @@ const routes: Routes = [
   {path: 'hero', component: HeroComponent },
   {path: 'newGame', component: GameEntryComponent },
   {path: 'date/:date', component: DateStatsComponent },
-  {path: '**', redirectTo: '', pathMatch: 'full'}
+  {path: 'stats', component: PersonalStatsComponent },
+
+  {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 
 @NgModule({

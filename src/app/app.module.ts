@@ -45,6 +45,7 @@ import { NgxChartsModule }from '@swimlane/ngx-charts';
 import { DateStatsComponent } from './date-stats/date-stats.component';
 import { StatsGroupComponent } from './stats-group/stats-group.component';
 import { FooterComponent } from './footer/footer.component';
+import { PersonalStatsComponent } from './personal-stats/personal-stats.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { FooterComponent } from './footer/footer.component';
     DateStatsComponent,
     StatsGroupComponent,
     FooterComponent,
+    PersonalStatsComponent,
   ],
   imports: [
     BrowserModule,
