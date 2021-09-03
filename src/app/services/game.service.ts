@@ -24,11 +24,10 @@ export class GameService {
   }
 
   public addGame(game: Game):Observable<Game>{
-    return this.httpClient.post<Game>(this.gameURL+'add', game);
+    return this.httpClient.post<Game>(this.gameURL+'add',game,{headers:new HttpHeaders({'Content-Type' : 'application/json','Authorization' : localStorage.getItem("AuthToken")!})});
   }
 
   public deleteGame(gameId:number):Observable<any>{
-    console.log("GOla2");
     let params = new HttpParams().set('id', gameId);
     return this.httpClient.delete<number>(this.gameURL+'delete', { headers: new HttpHeaders({'Content-Type' : 'application/json','Authorization' : localStorage.getItem("AuthToken")!}),params});
   }
