@@ -38,7 +38,10 @@ export class GameEntryComponent implements OnInit {
     private route: ActivatedRoute,
     private httpClient: HttpClient,
     private userService: UserService,
-  ) { }
+  ) {
+    this.userLogged = this.userService.getUser();
+    this.isLogged = this.userService.isLogged();
+  }
 
   hero!: Hero;
   heroString!: string;
@@ -55,24 +58,7 @@ export class GameEntryComponent implements OnInit {
       date: new FormControl('', [Validators.required]),
       hour: new FormControl('', [Validators.required]),
     });
-      this.httpClient.get(this.oauthURL + 'check',this.header).subscribe(
-        data => {
-          console.log(data);
-          if(Object.values(data)[0] == true){
-            this.userLogged=this.userService.initUserLogged(data);
-            this.isLogged = true;
-          }
-          else{
-            this.authService.authState.subscribe(
-              data => {
-                console.log(data);
-                this.userLogged = data;
-                this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
-              }
-            );
-          }
-        }
-      );
+
 
   }
 

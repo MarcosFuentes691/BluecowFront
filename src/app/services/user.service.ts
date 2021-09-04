@@ -21,20 +21,38 @@ export class UserService {
   oauthURL = 'http://localhost:8080/oauth/';
 
   userLogged:SocialUser = new SocialUser();
+  logged:boolean =false;
 
 
-  initUserLogged(data:Object):SocialUser {
-    this.userLogged.name = Object.values(data)[1];
+  initUserLogged(name:string):SocialUser {
+    this.userLogged.name = name;
     this.userLogged.authToken="token";
     this.userLogged.id="id";
-    this.userLogged.email=Object.values(data)[1];
+    this.userLogged.email=name;
     this.userLogged.provider="provides";
     this.userLogged.authorizationCode="code";
-    this.userLogged.firstName=Object.values(data)[1];
+    this.userLogged.firstName=name;
     this.userLogged.idToken="token";
-    this.userLogged.lastName=Object.values(data)[1];
+    this.userLogged.lastName=name;
     this.userLogged.photoUrl="https://www.pngfind.com/pngs/m/123-1234419_free-png-download-cute-cat-png-images-background.png";
     return this.userLogged;
   }
+
+  getUser():SocialUser{
+    return this.userLogged;
+  }
+
+  isLogged():boolean{
+    return this.logged;
+  }
+
+  login() {
+    this.logged=true;
+  }
+
+  logout(){
+    this.logged=false;
+  }
+
 }
 

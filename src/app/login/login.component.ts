@@ -33,24 +33,6 @@ export class LoginComponent implements OnInit {
   header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
 
   ngOnInit(): void {
-    this.httpClient.get(this.oauthURL + 'check',this.header).subscribe(
-      data => {
-        console.log(data);
-        if(Object.values(data)[0] == true){
-          this.userLogged=this.userService.initUserLogged(data);
-          this.isLogged = true;
-        }
-        else{
-          this.authService.authState.subscribe(
-            data => {
-              console.log(data);
-              this.userLogged = data;
-              this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
-            }
-          );
-        }
-      }
-    );
     this.loginForm = new FormGroup({
       username: new FormControl(  null, [Validators.required, Validators.email, Validators.minLength(6)]),
       password: new FormControl(null, [Validators.required, Validators.minLength(3)])
@@ -64,7 +46,9 @@ export class LoginComponent implements OnInit {
             localStorage.removeItem('AuthToken');
             localStorage.setItem('AuthToken',res.value);
             this.tokenService.setToken(res.value);
+            this.userLogged=this.userService.initUserLogged(this.loginForm.value.username);
             this.isLogged = true;
+            this.userService.login();
             this.router.navigate(['/']);
           },
           err => {
@@ -85,6 +69,8 @@ export class LoginComponent implements OnInit {
             localStorage.removeItem('AuthToken');
             localStorage.setItem('AuthToken',res.value);
             this.tokenService.setToken(res.value);
+            this.userLogged = data;
+            this.userService.login();
             this.isLogged = true;
             this.router.navigate(['/']);
           },

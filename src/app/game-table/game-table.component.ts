@@ -6,6 +6,7 @@ import {GamesComponent} from "../games/games.component";
 import * as moment from "moment";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-game-table',
@@ -26,6 +27,7 @@ export class GameTableComponent implements OnInit {
     private gameService: GameService,
     private modalService: NgbModal,
   ) {
+
   }
 
   ngOnInit(): void {

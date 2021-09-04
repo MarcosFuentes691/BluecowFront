@@ -33,7 +33,10 @@ export class HeroComponent implements OnInit {
     private httpClient: HttpClient,
     private gameService:GameService,
     private userService: UserService,
-  ) { }
+  ) {
+    this.userLogged = this.userService.getUser();
+    this.isLogged = this.userService.isLogged();
+  }
 
   hero: Hero = new Hero();
   heroString!: string;
@@ -47,22 +50,7 @@ export class HeroComponent implements OnInit {
   header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
 
   ngOnInit(): void {
-    this.httpClient.get(this.oauthURL + 'check',this.header).subscribe(
-      data => {
-        if(Object.values(data)[0] == true){
-          this.userLogged=this.userService.initUserLogged(data);
-          this.isLogged = true;
-        }
-        else{
-          this.authService.authState.subscribe(
-            data => {
-              this.userLogged = data;
-              this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
-            }
-          );
-        }
-      }
-    );
+
     this.searchForm = new FormGroup({
       time: new FormControl('Always',Validators.required),
     });

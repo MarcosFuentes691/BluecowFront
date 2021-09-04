@@ -41,29 +41,13 @@ export class PersonalStatsComponent implements OnInit {
     private userService: UserService,
     private dateService: DateService,
   ) {
-
+    this.userLogged = this.userService.getUser();
+    this.isLogged = this.userService.isLogged();
   }
 
   header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
   ngOnInit(): void {
-    this.httpClient.get(this.oauthURL + 'check',this.header).subscribe(
-      data => {
-        console.log("HOLA");
-        if(Object.values(data)[0] == true){
-          console.log("HOLA2");
-          this.userLogged=this.userService.initUserLogged(data);
-          this.isLogged = true;
-        }
-        else{
-          this.authService.authState.subscribe(
-            data => {
-              this.userLogged = data;
-              this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
-            }
-          );
-        }
-      }
-    );
+
     this.dateService.searchStats().subscribe(
       data => {
         this.stats=data;

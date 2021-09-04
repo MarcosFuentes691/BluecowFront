@@ -48,30 +48,13 @@ export class DateStatsComponent implements OnInit {
     private userService: UserService,
     private dateService: DateService,
     ) {
-
+    this.userLogged = this.userService.getUser();
+    this.isLogged = this.userService.isLogged();
   }
 
 
   header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
     ngOnInit(): void {
-      this.httpClient.get(this.oauthURL + 'check',this.header).subscribe(
-        data => {
-          console.log(data);
-          if(Object.values(data)[0] == true){
-            this.userLogged=this.userService.initUserLogged(data);
-            this.isLogged = true;
-          }
-          else{
-            this.authService.authState.subscribe(
-              data => {
-                console.log(data);
-                this.userLogged = data;
-                this.isLogged = (this.userLogged != null && this.tokenService.getToken() != null);
-              }
-            );
-          }
-        }
-      );
       this.sub = this.route.params.subscribe(params => {
         this.dateString = params['date'];
         this.from = moment(this.dateString).format("YYYY-MM-DD HH:mm:ss.SSS");
