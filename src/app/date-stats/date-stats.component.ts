@@ -106,7 +106,7 @@ export class DateStatsComponent implements OnInit {
         0,
         50,
         this.from,
-        this.to,
+        this.from,
         this.timeZone).subscribe(
         data => {
           this.games = data;
