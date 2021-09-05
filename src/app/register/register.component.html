@@ -1,0 +1,32 @@
+<app-menu></app-menu>
+<div class="container ">
+  <div class="row m-3 p-3">
+    <div class="col-md-4 mx-auto">
+      <div class="card">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="container bg-dark p-3">
+              <div class="row d-flex justify-content-center">
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="username">
+                </mat-form-field>
+              </div>
+              <div class="row d-flex justify-content-center">
+                <mat-form-field>
+                  <input matInput placeholder="Username" formControlName="name">
+                </mat-form-field>
+              </div>
+              <div class="row d-flex justify-content-center">
+                <mat-form-field>
+                  <input matInput type="password" placeholder="Password" formControlName="password">
+                </mat-form-field>
+              </div>
+              <div class="row d-flex justify-content-center">
+                <button mat-flat-button color="primary" type="submit">Register</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+

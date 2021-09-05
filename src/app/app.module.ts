@@ -46,6 +46,7 @@ import { DateStatsComponent } from './date-stats/date-stats.component';
 import { StatsGroupComponent } from './stats-group/stats-group.component';
 import { FooterComponent } from './footer/footer.component';
 import { PersonalStatsComponent } from './personal-stats/personal-stats.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { PersonalStatsComponent } from './personal-stats/personal-stats.componen
     StatsGroupComponent,
     FooterComponent,
     PersonalStatsComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

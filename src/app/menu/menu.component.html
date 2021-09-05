@@ -39,9 +39,11 @@
 
           <img *ngIf="isLogged" src="{{userLogged.photoUrl}}" class="rounded-circle mr-3" style="width: 50px" alt="Oopsie">
 
+          <button *ngIf="!isLogged" class="btn btn-outline-warning my-2 my-sm-0 mr-3" type="submit" routerLink="/register">
+            <i class="fas fa-user-plus fa-lg"></i>Register</button>
           <button *ngIf="!isLogged" class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login">
             <i class="fas fa-sign-in-alt fa-lg"></i> Log in</button>
-            <button *ngIf="isLogged" class="btn btn-outline-danger my-2 my-sm-0" type="submit" (click)="logOut()">
+          <button *ngIf="isLogged" class="btn btn-outline-danger my-2 my-sm-0" type="submit" (click)="logOut()">
               <i class="fas fa-sign-out-alt fa-lg"></i> Log out</button>
 
         </div>

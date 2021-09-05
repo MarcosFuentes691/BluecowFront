@@ -6,6 +6,8 @@ import {map} from "rxjs/operators";
 import {SocialAuthService, SocialUser} from "angularx-social-login";
 import {Router} from "@angular/router";
 import {TokenService} from "./token.service";
+import {LoginForm} from "./oauth.service";
+import {FormGroup} from "@angular/forms";
 
 const header = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 
@@ -22,7 +24,7 @@ export class UserService {
 
   userLogged:SocialUser = new SocialUser();
   logged:boolean =false;
-
+  constructor(private httpClient: HttpClient) { }
 
   initUserLogged(name:string):SocialUser {
     this.userLogged.name = name;
@@ -37,6 +39,8 @@ export class UserService {
     this.userLogged.photoUrl="https://www.pngfind.com/pngs/m/123-1234419_free-png-download-cute-cat-png-images-background.png";
     return this.userLogged;
   }
+
+
 
   getUser():SocialUser{
     return this.userLogged;

@@ -3,12 +3,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenDto } from '../models/token-dto';
 import { Observable } from 'rxjs';
 import {map} from "rxjs/operators";
+import {FormGroup} from "@angular/forms";
 
 const header = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 
 export interface LoginForm {
   username: string;
   password: string;
+};
+
+export interface RegisterForm {
+  username: string;
+  password: string;
+  name:string;
 };
 const TOKEN_KEY = 'AuthToken';
 
@@ -31,6 +38,16 @@ export class OauthService {
       map((token) => {
         console.log(token.value);
         localStorage.setItem(TOKEN_KEY, token.value);
+        return token;
+      })
+    );
+  }
+
+  public register(loginForm: RegisterForm) :Observable<string>{
+    console.log(loginForm);
+    return this.httpClient.post<any>(this.oauthURL+"register", loginForm,header).pipe(
+      map((token) => {
+        console.log(token.value);
         return token;
       })
     );

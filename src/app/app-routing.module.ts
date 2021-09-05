@@ -9,6 +9,7 @@ import {HeroesComponent} from "./heroes/heroes.component";
 import {GameEntryComponent} from "./gameEntry/gameEntry.component";
 import {DateStatsComponent} from "./date-stats/date-stats.component";
 import {PersonalStatsComponent} from "./personal-stats/personal-stats.component";
+import {RegisterComponent} from "./register/register.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path: 'newGame', component: GameEntryComponent },
   {path: 'date/:date', component: DateStatsComponent },
   {path: 'stats', component: PersonalStatsComponent },
-
+  {path: 'register', component: RegisterComponent },
   {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 
