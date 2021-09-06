@@ -21,7 +21,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSelectModule} from "@angular/material/select";
 
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { productoInterceptor } from './interceptors/producto.interceptor';
 import { gameInterceptor } from './interceptors/game.interceptor';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
@@ -47,6 +47,8 @@ import { StatsGroupComponent } from './stats-group/stats-group.component';
 import { FooterComponent } from './footer/footer.component';
 import { PersonalStatsComponent } from './personal-stats/personal-stats.component';
 import { RegisterComponent } from './register/register.component';
+import {loadingInterceptor, LoadingInterceptor} from "./interceptors/loading.interceptor";
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     PersonalStatsComponent,
     RegisterComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,6 +116,7 @@ import { RegisterComponent } from './register/register.component';
       } as SocialAuthServiceConfig,
     },
     gameInterceptor,
+    loadingInterceptor,
     {
       provide: MAT_DATE_FORMATS,
       useValue: {

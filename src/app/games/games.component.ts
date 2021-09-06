@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { Game } from '../models/game';
@@ -8,11 +8,13 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserService} from "../services/user.service";
 import * as moment from 'moment';
 import {waitForAsync} from "@angular/core/testing";
+import {LoadingService} from "../services/loading.service";
 
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css']
+  styleUrls: ['./games.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GamesComponent implements OnInit {
 
@@ -37,6 +39,7 @@ export class GamesComponent implements OnInit {
     private gameService: GameService,
     private httpClient: HttpClient,
     private userService: UserService,
+    public loadingService: LoadingService,
   ) {
     this.userLogged = this.userService.getUser();
     this.isLogged = this.userService.isLogged();
@@ -44,6 +47,10 @@ export class GamesComponent implements OnInit {
 
 
   header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
+
+
+
+
 
   ngOnInit(): void {
 

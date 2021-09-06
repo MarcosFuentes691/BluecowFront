@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { Router } from '@angular/router';
 import {LoginForm, OauthService} from '../services/oauth.service';
@@ -7,11 +7,13 @@ import { TokenDto } from '../models/token-dto';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserService} from "../services/user.service";
+import {LoadingService} from "../services/loading.service";
 const header = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
 
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
     private tokenService: TokenService,
     private httpClient: HttpClient,
     private userService:UserService,
+    public loadingService: LoadingService,
   ) { }
 
   header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};

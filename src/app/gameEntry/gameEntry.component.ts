@@ -9,6 +9,7 @@ import {Game} from "../models/game";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {GameService} from "../services/game.service";
 import {UserService} from "../services/user.service";
+import {LoadingService} from "../services/loading.service";
 
 
 @Component({
@@ -39,6 +40,8 @@ export class GameEntryComponent implements OnInit {
     private route: ActivatedRoute,
     private httpClient: HttpClient,
     private userService: UserService,
+    public loadingService: LoadingService,
+
   ) {
     this.userLogged = this.userService.getUser();
     this.isLogged = this.userService.isLogged();

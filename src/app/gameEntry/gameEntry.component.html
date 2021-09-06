@@ -117,6 +117,10 @@
     </div>
   </div>
 </form>
+  <div *ngIf="loadingService.isLoading$ | async">
+    <app-loading></app-loading>
+  </div>
 </div>
+
 
 <app-footer></app-footer>

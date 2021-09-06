@@ -1,5 +1,6 @@
 <app-menu [title]="title"></app-menu>
-<div class="container-fluid mb-4">
+
+<div  class="container-fluid mb-4">
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
       <div class="row mt-3 rowStyle">
         <div class="col-1">
@@ -124,11 +125,15 @@
         <div class="col-1 d-flex align-items-center">
           <button class="btn btn-primary ml-5 mr-5" type="submit" >Search</button>
         </div>
+
     </div>
   </form>
 </div>
 
-<app-game-table [games]=games></app-game-table>
+<div *ngIf="loadingService.isLoading$ | async">
+  <app-loading></app-loading>
+</div>
+<app-game-table *ngIf="!(loadingService.isLoading$ | async)" [games]=games></app-game-table>
 <app-footer></app-footer>
 
 

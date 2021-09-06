@@ -35,7 +35,10 @@
   </form>
 </div>
 
-<div class="container bg-dark p-0 ">
+<div *ngIf="loadingService.isLoading$ | async">
+  <app-loading></app-loading>
+</div>
+<div *ngIf="!(loadingService.isLoading$ | async)" class="container bg-dark p-0 ">
   <table class="table table-bordered table-dark align-middle" id="bootstrap-overrides" >
   <thead class="table-secondary text-dark">
     <tr>

@@ -10,6 +10,7 @@ import {UserService} from "../services/user.service";
 import * as moment from "moment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {GameService} from "../services/game.service";
+import {LoadingService} from "../services/loading.service";
 
 
 @Component({
@@ -33,6 +34,7 @@ export class HeroComponent implements OnInit {
     private httpClient: HttpClient,
     private gameService:GameService,
     private userService: UserService,
+    public loadingService: LoadingService,
   ) {
     this.userLogged = this.userService.getUser();
     this.isLogged = this.userService.isLogged();

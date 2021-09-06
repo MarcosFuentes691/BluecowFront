@@ -9,6 +9,7 @@ import {GameService} from "../services/game.service";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../services/user.service";
 import {DateService} from "../services/date.service";
+import {LoadingService} from "../services/loading.service";
 
 @Component({
   selector: 'app-personal-stats',
@@ -40,6 +41,8 @@ export class PersonalStatsComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private dateService: DateService,
+    public loadingService: LoadingService,
+
   ) {
     this.userLogged = this.userService.getUser();
     this.isLogged = this.userService.isLogged();

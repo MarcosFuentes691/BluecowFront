@@ -10,6 +10,7 @@ import {UserService} from "../services/user.service";
 import * as moment from "moment";
 import {Sort} from "@angular/material/sort";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {LoadingService} from "../services/loading.service";
 
 
 @Component({
@@ -34,7 +35,8 @@ export class HeroesComponent implements OnInit {
     private heroService: HeroService,
     private route: ActivatedRoute,
     private userService: UserService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    public loadingService: LoadingService,
   ) {
     this.userLogged = this.userService.getUser();
     this.isLogged = this.userService.isLogged();

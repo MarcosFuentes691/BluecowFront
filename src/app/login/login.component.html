@@ -1,4 +1,7 @@
-F<app-menu [title]=title></app-menu>
+<app-menu [title]=title></app-menu>
+<ng-container *ngIf="loadingService.isLoading$ | async">
+  <i class="loading"></i>
+</ng-container>
 <div class="container" *ngIf="!isLogged">
   <div class="row m-3">
     <div class="col-md-6 mx-auto">
@@ -26,5 +29,8 @@ F<app-menu [title]=title></app-menu>
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="loadingService.isLoading$ | async">
+  <app-loading></app-loading>
 </div>
 <app-footer></app-footer>
