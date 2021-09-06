@@ -40,7 +40,9 @@ export class UserService {
     return this.userLogged;
   }
 
-
+  setUser(data:any){
+    this.userLogged=data;
+  }
 
   getUser():SocialUser{
     return this.userLogged;
