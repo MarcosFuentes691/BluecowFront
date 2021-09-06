@@ -22,6 +22,7 @@ export class GamesComponent implements OnInit {
   userLogged: SocialUser = new SocialUser;
   isLogged: boolean = false;
   isCustom: boolean = false;
+  title:string="Games"
   oauthURL = 'http://localhost:8080/oauth/';
   searchForm!:FormGroup;
   range!:FormGroup;

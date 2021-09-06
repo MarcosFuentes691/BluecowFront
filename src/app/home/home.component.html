@@ -1,7 +1,120 @@
-<app-menu></app-menu>
-<h2>Home</h2>
+<app-menu [title]=title></app-menu>
+
 <div>
-  <img alt="as" src="{{userLogged.photoUrl}}">
-  {{userLogged.name}}
+  <div class="container-fluid">
+    <h2 class="d-flex justify-content-center" *ngIf="!isLogged">Log in to enter games and see your stats, meanwhile you can look at some general stats</h2>
+    <div class="container-fluid mt-4 mb-2">
+      <div class="row d-flex md-0 justify-content-center bg-dark">
+        <h2 class="d-flex justify-content-center text-white">Heroes of
+          the week</h2>
+      </div>
+      <div class="row mt-0 pb-2 mb-2 d-flex justify-content-center bg-dark">
+        <div class="col-md-4">
+          <div class="card"
+               style="background: radial-gradient(circle, rgba(74, 204, 113, 0.7035189075630253) 17%, rgba(49, 151, 80, 0.96) 50%, rgba(5, 56, 21, 1) 88%), url('/assets/images/squares/Hooktusk.jpg') center center no-repeat; color: white;">
+            <div class="card-body">
+              <h3 class="card-title">Best</h3>
+              <br> <br> <br> <a
+              href="hero/Hooktusk" style="font-size: 90%;"
+              class="btn btn-secondary">Hero Profile</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card"
+               style="background: radial-gradient(circle, rgba(0, 212, 255, 0.3953781341638217) 0%, rgba(9, 9, 121, 0.9239775739397321) 64%, rgba(2, 0, 36, 1) 100%), url('/assets/images/squares/Malygos.jpg') center center no-repeat; color: white;">
+            <div class="card-body">
+              <h3 class="card-title">Most played</h3>
+              <br> <br> <br> <a href="hero/Malygos"
+                                style="font-size: 90%;" class="btn btn-secondary">Hero
+              Profile</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card"
+               style="background: radial-gradient(circle, rgba(204, 36, 56, 0.7035189075630253) 17%, rgba(151, 25, 40, 0.96) 56%, rgba(56, 3, 10, 0.91) 88%), url('/assets/images/squares/Saurfang.jpg') center center no-repeat; color: white;">
+            <div class="card-body">
+              <h3 class="card-title">Worst</h3>
+              <br> <br> <br> <a
+              href="hero/Saurfang" style="font-size: 90%;"
+              class="btn btn-secondary">Hero Profile</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row pt-3 mt-3">
+      <div class="col-3">
+        <div class="card bg-dark text-white">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-body pr-0">
+                <h5 class="card-title">Stats</h5>
+                <p class="card-text">Today</p>
+
+              </div>
+            </div>
+            <div
+              class="text-danger col-md-6 d-flex align-items-center justify-content-center pl-1 font-weight-bold">
+              <h1>58</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card bg-dark text-white">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-body pr-0">
+                <h5 class="card-title">Stats</h5>
+                <p class="card-text">Stats</p>
+
+              </div>
+            </div>
+            <div
+              class="text-danger col-md-6 d-flex align-items-center justify-content-center pl-1 font-weight-bold">
+              <h1>58</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card bg-dark text-white">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-body pr-0">
+                <h5 class="card-title">Stats</h5>
+                <p class="card-text">Stats</p>
+
+              </div>
+            </div>
+            <div
+              class="text-danger col-md-6 d-flex align-items-center justify-content-center pl-1 font-weight-bold">
+              <h1>58</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card bg-dark text-white">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-body pr-0">
+                <h5 class="card-title">Stats</h5>
+                <p class="card-text">Stats</p>
+
+              </div>
+            </div>
+            <div
+              class="text-danger col-md-6 d-flex align-items-center justify-content-center pl-1 font-weight-bold">
+              <h1>58</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>

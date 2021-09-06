@@ -20,7 +20,7 @@ export class PersonalStatsComponent implements OnInit {
   userLogged: SocialUser = new SocialUser;
   isLogged: boolean = false;
   isCustom: boolean = false;
-  title:string = "this player stats"
+  title:string = "Personal stats"
   oauthURL = 'http://localhost:8080/oauth/';
   searchForm!:FormGroup;
   range!:FormGroup;

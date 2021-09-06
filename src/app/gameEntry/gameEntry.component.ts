@@ -25,6 +25,7 @@ export class GameEntryComponent implements OnInit {
   oauthURL = 'http://localhost:8080/oauth/';
   gameForm!:FormGroup;
   customDate:boolean=false;
+  title:string="New game"
 
   header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
 

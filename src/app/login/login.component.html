@@ -1,9 +1,9 @@
-<app-menu></app-menu>
+F<app-menu [title]=title></app-menu>
 <div class="container" *ngIf="!isLogged">
   <div class="row m-3">
     <div class="col-md-6 mx-auto">
-      <div class="card">
-        <div class="card-header text-center">
+      <div class="card bg-dark">
+        <div class="card-header text-center text-white">
           Sign in
         </div>
         <div class="card-body">
@@ -12,14 +12,14 @@
         </div>
         <div>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="container bg-dark">
-              <mat-form-field>
-                <input matInput placeholder="username" formControlName="username">
+            <div class="container">
+              <mat-form-field class="m-2">
+                <input matInput placeholder="Email" formControlName="username">
               </mat-form-field>
-              <mat-form-field>
+              <mat-form-field class="m-2">
                 <input matInput type="password" placeholder="Password" formControlName="password">
-              </mat-form-field>
-              <button mat-flat-button color="primary" type="submit">Login</button>
+              </mat-form-field >
+              <button mat-flat-button color="primary" class="m-2" type="submit">Login</button>
             </div>
           </form>
         </div>
@@ -27,3 +27,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>

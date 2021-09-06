@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   socialUser: SocialUser = new SocialUser;
   userLogged: SocialUser = new SocialUser;
   isLogged: boolean = false;
+  title:string="Log in"
   loginForm!: FormGroup ;
   oauthURL = 'http://localhost:8080/oauth/';
 
