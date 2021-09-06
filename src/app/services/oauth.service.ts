@@ -43,11 +43,11 @@ export class OauthService {
     );
   }
 
-  public register(loginForm: RegisterForm) :Observable<string>{
+  public register(loginForm: RegisterForm) :Observable<any>{
     console.log(loginForm);
     return this.httpClient.post<any>(this.oauthURL+"register", loginForm,header).pipe(
       map((token) => {
-        console.log(token.value);
+        console.log(token);
         return token;
       })
     );

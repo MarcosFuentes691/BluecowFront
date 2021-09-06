@@ -1,32 +1,39 @@
 <app-menu></app-menu>
-<div class="container ">
-  <div class="row m-3 p-3">
+<div class="container">
+  <div class="row m-3 p-3 ">
     <div class="col-md-4 mx-auto">
-      <div class="card">
+      <div class="alert alert-info">
+        If you log in with a Google account you don't need to register
+      </div>
+      <div class="card  round bg-dark">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="container bg-dark p-3">
               <div class="row d-flex justify-content-center">
-                <mat-form-field>
+                <mat-form-field [class.is-invalid]="loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
                     <input matInput placeholder="Email" formControlName="username">
                 </mat-form-field>
               </div>
               <div class="row d-flex justify-content-center">
-                <mat-form-field>
+                <mat-form-field [class.is-invalid]="loginForm.get('name')?.touched && loginForm.get('name')?.invalid">
                   <input matInput placeholder="Username" formControlName="name">
                 </mat-form-field>
               </div>
               <div class="row d-flex justify-content-center">
-                <mat-form-field>
-                  <input matInput type="password" placeholder="Password" formControlName="password">
+                <mat-form-field >
+                  <input [class.is-invalid]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" matInput type="password" placeholder="Password" formControlName="password">
                 </mat-form-field>
               </div>
-              <div class="row d-flex justify-content-center">
+              <div class="row d-flex justify-content-center" *ngIf="loginForm.status == 'VALID'">
                 <button mat-flat-button color="primary" type="submit">Register</button>
               </div>
             </div>
           </form>
+        <div *ngIf="loadingService.isLoading$ | async">
+          <app-loading></app-loading>
+        </div>
         </div>
       </div>
     </div>
   </div>
+
 
