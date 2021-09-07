@@ -16,8 +16,8 @@ import {HttpParams} from "@angular/common/http";
 })
 export class HeroService {
 
-  gameURL = 'http://localhost:8080/hero';
-  gameURL2 = 'http://localhost:8080/hero';
+  gameURL = 'https://bluecowback.herokuapp.com/hero';
+  gameURL2 = 'https://bluecowback.herokuapp.com/hero';
   public heroString!: string;
 
   constructor(

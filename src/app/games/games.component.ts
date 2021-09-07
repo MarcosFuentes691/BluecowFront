@@ -25,7 +25,7 @@ export class GamesComponent implements OnInit {
   isLogged: boolean = false;
   isCustom: boolean = false;
   title:string="Games"
-  oauthURL = 'http://localhost:8080/oauth/';
+  oauthURL = 'https://bluecowback.herokuapp.com/oauth/';
   searchForm!:FormGroup;
   range!:FormGroup;
   startMoment:string = "Always";

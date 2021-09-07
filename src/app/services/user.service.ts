@@ -20,7 +20,7 @@ const TOKEN_KEY = 'AuthToken';
 
 export class UserService {
 
-  oauthURL = 'http://localhost:8080/oauth/';
+  oauthURL = 'https://bluecowback.herokuapp.com/oauth/';
 
   userLogged:SocialUser = new SocialUser();
   logged:boolean =false;

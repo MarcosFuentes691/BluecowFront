@@ -22,7 +22,7 @@ export class PersonalStatsComponent implements OnInit {
   isLogged: boolean = false;
   isCustom: boolean = false;
   title:string = "Personal stats"
-  oauthURL = 'http://localhost:8080/oauth/';
+  oauthURL = 'https://bluecowback.herokuapp.com/oauth/';
   searchForm!:FormGroup;
   range!:FormGroup;
   startMoment:string = "Always";

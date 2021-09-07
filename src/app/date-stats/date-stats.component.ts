@@ -23,7 +23,7 @@ export class DateStatsComponent implements OnInit {
   userLogged: SocialUser = new SocialUser;
   isLogged: boolean = false;
   isCustom: boolean = false;
-  oauthURL = 'http://localhost:8080/oauth/';
+  oauthURL = 'https://bluecowback.herokuapp.com/oauth/';
   searchForm!:FormGroup;
   range!:FormGroup;
   startMoment:string = "Always";

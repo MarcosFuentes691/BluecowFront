@@ -10,7 +10,7 @@ import {Stats} from "../models/stats";
 })
 export class DateService {
 
-  gameURL = 'http://localhost:8080/player/';
+  gameURL = 'https://bluecowback.herokuapp.com/player/';
 
   constructor(private httpClient: HttpClient) { }
 

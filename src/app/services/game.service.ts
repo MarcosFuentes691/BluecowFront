@@ -9,7 +9,7 @@ import { Game } from '../models/game';
 })
 export class GameService {
 
-  gameURL = 'http://localhost:8080/game/';
+  gameURL = 'https://bluecowback.herokuapp.com/game/';
 
   constructor(private httpClient: HttpClient) { }
 

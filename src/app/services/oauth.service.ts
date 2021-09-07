@@ -25,7 +25,7 @@ const TOKEN_KEY = 'AuthToken';
 
 export class OauthService {
 
-  oauthURL = 'http://localhost:8080/oauth/';
+  oauthURL = 'https://bluecowback.herokuapp.com/oauth/';
 
   constructor(private httpClient: HttpClient) { }
 

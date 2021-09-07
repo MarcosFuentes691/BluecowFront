@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   isLogged: boolean = false;
   title:string="Log in"
   loginForm!: FormGroup ;
-  oauthURL = 'http://localhost:8080/oauth/';
+  oauthURL = 'https://bluecowback.herokuapp.com/oauth/';
 
   constructor(
     private authService: SocialAuthService,

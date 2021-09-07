@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   userLogged: SocialUser = new SocialUser;
   isLogged: boolean = false;
-  oauthURL = 'http://localhost:8080/oauth/';
+  oauthURL = 'https://bluecowback.herokuapp.com/oauth/';
   title:string="Home";
 
 
