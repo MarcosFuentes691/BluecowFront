@@ -96,7 +96,6 @@
   <table class="table table-bordered table-dark align-middle" id="bootstrap-overrides" matSort (matSortChange)="sortData($event)">
     <thead>
     <tr>
-      <th mat-sort-header="id" scope="col">Id</th>
       <th mat-sort-header="hero" scope="col">Hero</th>
       <th mat-sort-header="place" scope="col">Place</th>
       <th mat-sort-header="mmr" scope="col">Mmr</th>
@@ -107,7 +106,6 @@
     </thead>
     <tbody>
     <tr *ngFor="let game of games" class="pos{{game.place}}">
-      <td>{{game.id}}</td>
       <td>
         <a href="hero/{{game.hero}}">
           <img src="/assets/images/{{game.hero}}.png" alt="image" style="width: 70px; height: 70px;"><br>
