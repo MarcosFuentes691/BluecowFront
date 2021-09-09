@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
           },
           err => {
             console.log(err);
+            alert("Could not login succesfully");
             this.logOut();
           }
       );
@@ -81,6 +82,7 @@ export class LoginComponent implements OnInit {
           },
           err => {
             console.log(err);
+            alert("Could not login succesfully");
             this.logOut();
           }
         );
@@ -88,6 +90,7 @@ export class LoginComponent implements OnInit {
     ).catch(
       err => {
         console.log(err);
+        alert("Could not login succesfully");
       }
     );
   }

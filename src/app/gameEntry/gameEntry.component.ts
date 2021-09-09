@@ -83,6 +83,10 @@ export class GameEntryComponent implements OnInit {
       data=>{
         console.log(data);
         window.alert("Game added correctly");
+      },
+      err => {
+        console.log(err);
+        alert("Could not add the game succesfully");
       }
     );
   }
