@@ -36,27 +36,35 @@ export class UserService {
     this.userLogged.firstName=name;
     this.userLogged.idToken="token";
     this.userLogged.lastName=name;
+    this.setUser(name);
     this.userLogged.photoUrl="https://www.pngfind.com/pngs/m/123-1234419_free-png-download-cute-cat-png-images-background.png";
     return this.userLogged;
   }
 
   setUser(data:any){
-    this.userLogged=data;
+    localStorage.setItem('User',data);
+    this.userLogged.name=data;
   }
 
   getUser():SocialUser{
-    return this.userLogged;
+    let user = new SocialUser();
+    user.name=localStorage.getItem('User')!;
+    return user;
   }
 
   isLogged():boolean{
-    return this.logged;
+    if(localStorage.getItem('Logged')! == 'true')
+      return true
+    else return false
   }
 
   login() {
+    localStorage.setItem('Logged','true');
     this.logged=true;
   }
 
   logout(){
+    localStorage.setItem('Logged','false');
     this.logged=false;
   }
 

@@ -22,7 +22,6 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSelectModule} from "@angular/material/select";
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { productoInterceptor } from './interceptors/producto.interceptor';
 import { gameInterceptor } from './interceptors/game.interceptor';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 

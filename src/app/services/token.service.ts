@@ -12,16 +12,20 @@ export class TokenService {
 
 
   public setToken(token: string): void {
+    localStorage.removeItem(TOKEN_KEY);
     sessionStorage.removeItem(TOKEN_KEY);
+    localStorage.setItem(TOKEN_KEY, token);
     sessionStorage.setItem(TOKEN_KEY, token);
   }
 
   public getToken(): string|null {
-    return sessionStorage.getItem(TOKEN_KEY);
+    return localStorage.getItem(TOKEN_KEY);
+    //return sessionStorage.getItem(TOKEN_KEY);
   }
 
 
   logOut(): void {
+    localStorage.clear();
     sessionStorage.clear();
     this.userService.logout();
   }

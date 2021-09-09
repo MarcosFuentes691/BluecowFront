@@ -10,18 +10,20 @@ import {GameEntryComponent} from "./gameEntry/gameEntry.component";
 import {DateStatsComponent} from "./date-stats/date-stats.component";
 import {PersonalStatsComponent} from "./personal-stats/personal-stats.component";
 import {RegisterComponent} from "./register/register.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'games', component: GamesComponent},
-  {path: 'hero/:hero', component: HeroComponent },
-  {path: 'heroes', component: HeroesComponent },
-  {path: 'hero', component: HeroComponent },
-  {path: 'newGame', component: GameEntryComponent },
-  {path: 'date/:date', component: DateStatsComponent },
-  {path: 'stats', component: PersonalStatsComponent },
+  {path: 'games', component: GamesComponent,canActivate: [AuthGuard]},
+  {path: 'hero/:hero', component: HeroComponent,canActivate: [AuthGuard]},
+  {path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard]},
+  {path: 'hero', component: HeroComponent,canActivate: [AuthGuard]},
+  {path: 'newGame', component: GameEntryComponent ,canActivate: [AuthGuard]},
+  {path: 'date/:date', component: DateStatsComponent ,canActivate: [AuthGuard]},
+  {path: 'stats', component: PersonalStatsComponent ,canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent },
+
   {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 

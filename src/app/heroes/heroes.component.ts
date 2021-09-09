@@ -26,6 +26,7 @@ export class HeroesComponent implements OnInit {
   roundPlace!: number;
   searchForm!:FormGroup;
   range!:FormGroup;
+  token!:any;
 
 
 
@@ -40,6 +41,7 @@ export class HeroesComponent implements OnInit {
   ) {
     this.userLogged = this.userService.getUser();
     this.isLogged = this.userService.isLogged();
+    this.token= this.tokenService.getToken();
   }
 
   heroes: Hero[] = [];
@@ -51,7 +53,11 @@ export class HeroesComponent implements OnInit {
   header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
 
   ngOnInit(): void {
-
+    console.log("hola");
+    console.log(this.userLogged);
+    console.log(this.isLogged);
+    console.log(this.token);
+    console.log("CHAI");
     this.searchForm = new FormGroup({
       time: new FormControl('Always',Validators.required),
     });
@@ -96,6 +102,7 @@ export class HeroesComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.getAllHeroes();
   }
 

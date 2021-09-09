@@ -49,6 +49,8 @@ export class LoginComponent implements OnInit {
           res => {
             localStorage.removeItem('AuthToken');
             localStorage.setItem('AuthToken',res.value);
+            sessionStorage.removeItem('AuthToken');
+            sessionStorage.setItem('AuthToken',res.value);
             this.tokenService.setToken(res.value);
             this.userLogged=this.userService.initUserLogged(this.loginForm.value.username);
             this.isLogged = true;
@@ -73,6 +75,8 @@ export class LoginComponent implements OnInit {
           res => {
             localStorage.removeItem('AuthToken');
             localStorage.setItem('AuthToken',res.value);
+            sessionStorage.removeItem('AuthToken');
+            sessionStorage.setItem('AuthToken',res.value);
             this.tokenService.setToken(res.value);
             this.userLogged = data;
             this.userService.login();
