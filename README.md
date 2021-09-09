@@ -3,9 +3,11 @@ Front end of web application to keep track of Hearthstone Battlegrounds games an
 
 Deployed online at https://bluecowhs.herokuapp.com/ (It's not using any paid databases or services so it may be a bit slow, specially the first time you load it).
 
+More information about what's next in the app can be found at https://www.notion.so/568121e9b72a447abf2962410d7919f4?v=50a413b2340b45548747021acbd30c57
+
 *You can try out the app using your own account or you could use a prepopulated account(email:dummy@email.com, password:dummy)*
 
-###Here's a brief explanation of how a game works so that you can understand the app better(A more detailed guide/readme is coming soon) :
+##Here's a brief explanation of how a game works so that you can understand the app better(A more detailed guide/readme is coming soon) :
 
 -Hero: There is a variety of different heroes of which you choose one to play each game.
 
