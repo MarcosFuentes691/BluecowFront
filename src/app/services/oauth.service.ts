@@ -4,6 +4,9 @@ import { TokenDto } from '../models/token-dto';
 import { Observable } from 'rxjs';
 import {map} from "rxjs/operators";
 import {FormGroup} from "@angular/forms";
+import {Game} from "../models/game";
+import * as moment from "moment";
+import {TokenService} from "./token.service";
 
 const header = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 
@@ -27,7 +30,8 @@ export class OauthService {
 
   oauthURL = 'https://bluecowback.herokuapp.com/oauth/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private tokenService: TokenService) { }
 
   public google(tokenDto: TokenDto): Observable<TokenDto> {
     return this.httpClient.post<TokenDto>(this.oauthURL + 'google', tokenDto, header);
@@ -40,6 +44,20 @@ export class OauthService {
         localStorage.setItem(TOKEN_KEY, token.value);
         return token;
       })
+    );
+  }
+
+  public check() {
+    this.httpClient.get<boolean>(this.oauthURL+'check').subscribe(
+      data => {
+        if(!data){
+          this.tokenService.logOut();
+          console.log(data);
+        }
+      },
+      err => {
+        console.log(err);
+      }
     );
   }
 

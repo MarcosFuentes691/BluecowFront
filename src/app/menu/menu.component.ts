@@ -5,6 +5,7 @@ import { TokenService } from '../services/token.service';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserService} from "../services/user.service";
 import {Stats} from "../models/stats";
+import {OauthService} from "../services/oauth.service";
 
 
 
@@ -26,6 +27,7 @@ export class MenuComponent implements OnInit {
     private tokenService: TokenService,
     private httpClient: HttpClient,
     private userService: UserService,
+    private oauthService: OauthService,
   ) {
     this.userLogged = this.userService.getUser();
     this.isLogged = this.userService.isLogged();
@@ -34,6 +36,7 @@ export class MenuComponent implements OnInit {
   header : any = {headers: new HttpHeaders({'Authorization' : localStorage.getItem("AuthToken")!})};
 
   ngOnInit(): void {
+    this.oauthService.check();
     console.log(this.isLogged);
     console.log(this.userLogged);
   }
