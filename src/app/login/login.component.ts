@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('AuthToken',res.value);
             this.tokenService.setToken(res.value);
             this.userLogged=this.userService.initUserLogged(this.loginForm.value.username);
+            this.userService.setUser(this.userLogged.name);
             this.isLogged = true;
             this.userService.login();
             this.router.navigate(['/']);
@@ -79,8 +80,9 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('AuthToken',res.value);
             this.tokenService.setToken(res.value);
             this.userLogged = data;
+            this.userLogged.name = data.name;
             this.userService.login();
-            this.userService.setUser(this.userLogged);
+            this.userService.setUser(this.userLogged.name);
             this.isLogged = true;
             this.router.navigate(['/']);
           },
